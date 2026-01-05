@@ -3,189 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Scaler's Agency | Precision Growth</title>
+    <title>The Scalers Agency | Performance & Scale</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
-        [x-cloak] { display: none !important; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background-color: #050505; color: #ffffff; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #ffffff; }
         .gradient-text { background: linear-gradient(90deg, #fff, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        .card-glow:hover { border-color: #3b82f6; box-shadow: 0 0 40px rgba(59, 130, 246, 0.2); transform: scale(1.02); transition: all 0.4s; }
-        .math-bg { background-image: url('https://www.transparenttextures.com/patterns/cubes.png'); opacity: 0.05; position: absolute; inset: 0; pointer-events: none; }
+        .card-glow:hover { box-shadow: 0 0 20px rgba(59, 130, 246, 0.2); border-color: #3b82f6; transition: all 0.3s ease; }
     </style>
 </head>
-<body x-data="languageManager()" x-init="initAnimations()">
+<body class="antialiased">
 
-    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-xl border-b border-white/5">
-        <div class="flex justify-between items-center p-5 max-w-7xl mx-auto">
-            <div class="text-xl md:text-2xl font-black tracking-tighter">
-                THE SCALER<span class="text-blue-500 text-3xl">'</span>S AGENCY
-            </div>
-            <div class="flex items-center space-x-4">
-                <div class="flex space-x-1 bg-white/5 p-1 rounded-full border border-white/10 text-[10px] font-bold">
-                    <button @click="setLang('en')" :class="lang === 'en' ? 'bg-blue-600' : ''" class="px-2 py-1 rounded-full transition">EN</button>
-                    <button @click="setLang('fr')" :class="lang === 'fr' ? 'bg-blue-600' : ''" class="px-2 py-1 rounded-full transition">FR</button>
-                    <button @click="setLang('de')" :class="lang === 'de' ? 'bg-blue-600' : ''" class="px-2 py-1 rounded-full transition">DE</button>
-                </div>
-                <a href="#contact" class="bg-blue-600 text-white px-5 py-2 rounded-full font-bold text-xs">LOG IN / SCALE</a>
-            </div>
-        </div>
+    <nav class="flex justify-between items-center p-6 max-w-7xl mx-auto">
+        <div class="text-2xl font-black tracking-tighter">THE SCALERS<span class="text-blue-500">.</span></div>
+        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-bold transition">Get Scaled</a>
     </nav>
 
-    <header class="relative min-h-screen flex flex-col justify-center items-center pt-20 px-6 text-center overflow-hidden">
-        <div class="math-bg"></div>
-        <div class="reveal max-w-5xl">
-            <div class="inline-block border border-blue-500/30 bg-blue-500/10 px-4 py-1 rounded-full text-blue-400 text-xs font-bold mb-6 tracking-widest uppercase">
-                Stop Guessing. Start Calculating.
-            </div>
-            <h1 class="text-5xl md:text-8xl font-black mb-8 leading-tight uppercase tracking-tighter">
-                <span x-text="t[lang].hero1"></span> <br><span class="gradient-text" x-text="t[lang].hero2"></span>
-            </h1>
-            <p class="text-gray-400 text-xl md:text-2xl mb-12 max-w-3xl mx-auto font-light leading-relaxed" x-text="t[lang].heroSub"></p>
-            <div class="flex flex-col md:flex-row justify-center gap-5">
-                <a href="#selection" class="bg-white text-black px-10 py-5 rounded-xl font-black text-lg hover:bg-blue-500 hover:text-white transition duration-500 uppercase tracking-wide">Start Now</a>
-                <a href="#ai" class="border border-white/20 px-10 py-5 rounded-xl font-black text-lg hover:bg-white/5 transition uppercase tracking-wide" x-text="t[lang].btnServices">Methods</a>
-            </div>
+    <header class="py-20 px-6 text-center max-w-5xl mx-auto">
+        <h1 class="text-5xl md:text-8xl font-black mb-6 leading-tight">VOTRE CROISSANCE N'EST PAS UN <span class="gradient-text">HASARD.</span></h1>
+        <p class="text-gray-400 text-xl md:text-2xl mb-10 max-w-3xl mx-auto">Nous brisons les bottlenecks de votre funnel grâce à une ingénierie publicitaire de précision et des assets IA de nouvelle génération.</p>
+        <div class="flex flex-col md:flex-row justify-center gap-4">
+            <a href="#services" class="bg-white text-black px-8 py-4 rounded-lg font-black text-lg hover:bg-gray-200 transition">VOIR NOS SOLUTIONS</a>
+            <a href="#ai" class="border border-gray-700 px-8 py-4 rounded-lg font-black text-lg hover:bg-gray-900 transition underline decoration-blue-500">DÉCOUVRIR L'UGC-IA</a>
         </div>
     </header>
 
-    <section id="selection" class="py-32 bg-zinc-950 px-6 relative">
-        <div class="max-w-7xl mx-auto text-center">
-            <h2 class="reveal text-4xl md:text-6xl font-black mb-16" x-text="t[lang].selectTitle">CHOOSE YOUR WEAPON</h2>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div @click="selectProduct('Web Infrastructure')" class="reveal bg-zinc-900 border border-white/10 p-8 rounded-3xl card-glow cursor-pointer text-left relative overflow-hidden group">
-                    <div class="text-blue-500 font-bold mb-4">01. Web Ops</div>
-                    <h3 class="text-2xl font-black mb-2">Web Infrastructure</h3>
-                    <p class="text-gray-500 text-sm mb-6">High-performance hosting & weekly maintenance.</p>
-                    <div class="text-3xl font-black mb-8">50€<span class="text-sm font-normal text-gray-600"> /mo</span></div>
-                    <span class="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-all text-blue-500 font-bold">Select →</span>
-                </div>
-
-                <div @click="selectProduct('Media Buying')" class="reveal bg-zinc-900 border border-white/10 p-8 rounded-3xl card-glow cursor-pointer text-left relative group">
-                    <div class="text-blue-500 font-bold mb-4">02. Growth</div>
-                    <h3 class="text-2xl font-black mb-2">Media Buying</h3>
-                    <p class="text-gray-500 text-sm mb-6">Scientific bottleneck identification & campaign management.</p>
-                    <div class="text-3xl font-black mb-8">1500€<span class="text-sm font-normal text-gray-600"> /mo</span></div>
-                    <span class="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-all text-blue-500 font-bold">Select →</span>
-                </div>
-
-                <div @click="selectProduct('Full Scale')" class="reveal bg-blue-600 p-8 rounded-3xl card-glow cursor-pointer text-left relative group">
-                    <div class="text-white/80 font-bold mb-4">03. Dominance</div>
-                    <h3 class="text-2xl font-black mb-2 text-white">The Full Scale</h3>
-                    <p class="text-blue-100 text-sm mb-6">Media Buying + Deepfake Quality AI UGC Ads.</p>
-                    <div class="text-3xl font-black mb-8 text-white">3000€<span class="text-sm font-normal text-blue-200"> /mo</span></div>
-                    <span class="absolute bottom-6 right-6 opacity-100 text-white font-bold">Most Picked →</span>
-                </div>
+    <section id="services" class="py-20 max-w-7xl mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-12 border-l-4 border-blue-600 pl-4">INFRASTRUCTURE WEB</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-zinc-900 p-8 rounded-2xl border border-zinc-800 card-glow">
+                <h3 class="text-xl font-bold mb-2">Pack Minimum Standards Allowed</h3>
+                <p class="text-4xl font-black mb-6">50€<span class="text-sm text-gray-500"> /mois</span></p>
+                <ul class="text-gray-400 space-y-3 mb-8">
+                    <li>✓ Création de site (Setup 500€)</li>
+                    <li>✓ Hébergement Haute Performance</li>
+                    <li>✓ 1 Update hebdomadaire</li>
+                </ul>
             </div>
+            <div class="bg-zinc-900 p-8 rounded-2xl border border-blue-900 card-glow relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-blue-600 text-[10px] px-3 py-1 font-bold uppercase">Best Value</div>
+                <h3 class="text-xl font-bold mb-2">Pack Client Is King</h3>
+                <p class="text-4xl font-black mb-6">Sur Mesure</p>
+                <ul class="text-gray-400 space-y-3 mb-8">
+                    <li>✓ Refonte complète mensuelle (si besoin)</li>
+                    <li>✓ 3 Updates simultanées / semaine</li>
+                    <li>✓ Priorité absolue sur le support</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-            <div x-show="selected" x-cloak x-transition class="mt-20 p-12 bg-white text-black rounded-3xl text-left max-w-4xl mx-auto">
-                <div class="flex flex-col md:flex-row justify-between items-center gap-10">
-                    <div class="md:w-1/2">
-                        <h4 class="text-sm font-bold text-blue-600 uppercase tracking-widest mb-2">Next Step for</h4>
-                        <h3 class="text-4xl font-black mb-4" x-text="selected"></h3>
-                        <p class="text-gray-600 mb-6" x-text="stepDesc"></p>
+    <section id="ai" class="py-20 bg-zinc-950 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-right border-r-4 border-blue-600 pr-4">PERFORMANCE & SCALE</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-4xl font-black mb-6 leading-tight">L'IA AU SERVICE DE <br><span class="text-blue-500">VOTRE R.O.A.S.</span></h3>
+                    <p class="text-gray-400 mb-6">Nous ne nous contentons pas de "gérer des pubs". Nous utilisons notre propre technologie d'IA pour générer des scripts et des modèles UGC synthétiques qui convertissent 3x plus que la moyenne.</p>
+                    <div class="bg-blue-600/10 border border-blue-500/30 p-6 rounded-xl">
+                        <p class="italic text-blue-200">"Ma méthode exclusive identifie les bottlenecks précis de votre funnel. Je débloque le flux, vous encaissez les profits."</p>
                     </div>
-                    <div class="md:w-1/2 w-full text-center">
-                        <template x-if="selected === 'Web Infrastructure'">
-                            <button class="w-full bg-black text-white py-6 rounded-2xl font-black text-xl hover:scale-105 transition">PROCEED TO CHECKOUT</button>
-                        </template>
-                        <template x-if="selected !== 'Web Infrastructure'">
-                            <div class="space-y-4">
-                                <p class="text-xs font-bold text-gray-400 uppercase">Step 1: Watch Proof (VSL)</p>
-                                <div class="aspect-video bg-gray-200 rounded-xl flex items-center justify-center mb-4">
-                                    <span class="text-gray-400 text-xs text-center px-4">Your Video VSL showing Deepfake AI & Math Equations</span>
-                                </div>
-                                <button class="w-full bg-blue-600 text-white py-6 rounded-2xl font-black text-xl hover:bg-blue-700 transition">BOOK STRATEGY CALL</button>
-                            </div>
-                        </template>
+                </div>
+                <div class="grid gap-6">
+                    <div class="bg-zinc-900 p-8 rounded-2xl border border-zinc-800 hover:border-blue-500 transition">
+                        <h4 class="font-bold text-xl mb-2">Media Buying Pure</h4>
+                        <p class="text-3xl font-black text-blue-500 mb-4">1 500€ /mois</p>
+                        <p class="text-sm text-gray-400 italic italic">Gestion TikTok/IG/FB + Analyse des bottlenecks + Optimisation des métriques.</p>
+                    </div>
+                    <div class="bg-zinc-900 p-8 rounded-2xl border-2 border-blue-600">
+                        <h4 class="font-bold text-xl mb-2">The Full Scale (IA + Media)</h4>
+                        <p class="text-3xl font-black text-blue-500 mb-4">3 000€ /mois</p>
+                        <p class="text-sm text-gray-400">Media Buying + Scripts Stratégiques + Création de publicités via IA (UGC Models) + Gestion des campagnes.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="ai" class="py-32 px-6 max-w-7xl mx-auto">
-        <div class="reveal grid md:grid-cols-2 gap-20 items-center">
-            <div>
-                <h3 class="text-5xl font-black mb-8 uppercase" x-text="t[lang].aiTitle1"></h3>
-                <p class="text-gray-400 text-xl mb-10 leading-relaxed" x-text="t[lang].aiDesc"></p>
-                <div class="bg-blue-600/5 border-l-4 border-blue-600 p-8">
-                    <p class="italic text-xl text-gray-200 font-light" x-text="t[lang].quote"></p>
-                </div>
-            </div>
-            <div class="relative">
-                <div class="absolute -inset-4 bg-blue-500/10 blur-3xl rounded-full"></div>
-                <div class="relative bg-zinc-900 p-1 border border-white/10 rounded-2xl overflow-hidden">
-                     <div class="p-8 text-center">
-                         <div class="text-6xl mb-4">∑</div>
-                         <p class="text-xs text-blue-400 font-mono">FUNNEL_EFFICIENCY = (V * Cr) / (CPA + m)</p>
-                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <footer id="contact" class="py-20 text-center border-t border-zinc-900">
+        <h2 class="text-3xl font-black mb-8">PRÊT À PASSER AU NIVEAU SUPÉRIEUR ?</h2>
+        <button class="bg-white text-black px-12 py-5 rounded-full font-black text-xl hover:scale-105 transition transform">DÉMARRER MAINTENANT</button>
+        <p class="mt-12 text-gray-600 text-sm">© 2024 The Scalers Agency. All Rights Reserved.</p>
+    </footer>
 
-    <a href="https://wa.me/YOURNUMBER" target="_blank" class="fixed bottom-8 right-8 z-[100] bg-blue-600 w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition cursor-pointer">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
-    </a>
-
-    <script>
-        function languageManager() {
-            return {
-                lang: localStorage.getItem('scalerLang') || 'en',
-                selected: null,
-                stepDesc: '',
-                setLang(l) { this.lang = l; localStorage.setItem('scalerLang', l); },
-                selectProduct(p) {
-                    this.selected = p;
-                    if(p === 'Web Infrastructure') this.stepDesc = "Direct access to our secure setup. No calls needed, we start building within 24h.";
-                    else this.stepDesc = "High-ticket scaling requires alignment. Watch our video proof then book your slot.";
-                },
-                initAnimations() {
-                    const observer = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
-                    }, { threshold: 0.1 });
-                    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-                },
-                t: {
-                    en: {
-                        hero1: "GROWTH IS SCIENCE,",
-                        hero2: "NOT GUESSWORK.",
-                        heroSub: "We engineering scaling through real mathematical formulas and deepfake-quality AI ads.",
-                        btnServices: "The Math",
-                        aiTitle1: "DEEPFAKE AI & MATH PRECISION",
-                        aiDesc: "'Deepfake' quality synthetic AI UGC models and strategic scripts designed to explode conversions without filming costs.",
-                        quote: "My method use real mathematic equations to identifies exact funnel bottlenecks and stop testing 'hypothetically'. I unlock the flow, you collect the profits.",
-                        selectTitle: "SELECT YOUR SCALE"
-                    },
-                    fr: {
-                        hero1: "LE SCALE EST UNE SCIENCE,",
-                        hero2: "PAS UNE DEVINETTE.",
-                        heroSub: "Nous concevons votre croissance via des formules mathématiques réelles et des pubs IA de qualité Deepfake.",
-                        btnServices: "La Méthode",
-                        aiTitle1: "DEEPFAKE IA & MATHS DE PRÉCISION",
-                        aiDesc: "Des modèles UGC synthétiques IA de qualité 'Deepfake' et des scripts stratégiques conçus pour exploser les conversions.",
-                        quote: "Ma méthode utilise de réelles équations mathématiques pour identifier les bottlenecks précis et arrêter les tests 'hypothétiques'. J'ouvre le flux, vous encaissez.",
-                        selectTitle: "CHOISISSEZ VOTRE SCALE"
-                    },
-                    de: {
-                        hero1: "SKALIERUNG IST WISSENSCHAFT,",
-                        hero2: "KEIN RATEN.",
-                        heroSub: "Wir entwickeln Wachstum durch mathematische Formeln und KI-Anzeigen in Deepfake-Qualität.",
-                        btnServices: "Die Methode",
-                        aiTitle1: "DEEPFAKE KI & MATHE-PRÄZISION",
-                        aiDesc: "KI-generierte UGC-Modelle in 'Deepfake'-Qualität und strategische Skripte für maximale Konversion.",
-                        quote: "Meine Methode nutzt echte mathematische Gleichungen, um Engpässe zu identifizieren. Ich öffne den Fluss, Sie machen den Gewinn.",
-                        selectTitle: "WÄHLEN SIE IHR SCALE"
-                    }
-                }
-            }
-        }
-    </script>
 </body>
 </html>
