@@ -11,7 +11,6 @@
         [x-cloak] { display: none !important; }
         html { scroll-behavior: smooth; }
         
-        /* Fond noir profond pour laisser paraître les particules */
         body { 
             font-family: 'Inter', sans-serif; 
             background-color: #000000; 
@@ -19,7 +18,6 @@
             overflow-x: hidden;
         }
 
-        /* Canvas en arrière-plan fixe */
         #particle-canvas {
             position: fixed;
             top: 0;
@@ -30,7 +28,6 @@
             pointer-events: none;
         }
 
-        /* On s'assure que le contenu est au-dessus du canvas */
         .relative-content {
             position: relative;
             z-index: 10;
@@ -39,7 +36,6 @@
         .gradient-text { background: linear-gradient(90deg, #fff, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .card-glow:hover { box-shadow: 0 0 20px rgba(59, 130, 246, 0.2); border-color: #3b82f6; transition: all 0.3s ease; }
         
-        /* Glassmorphism pour les sections pour voir les particules derrière */
         .glass-section {
             background: rgba(10, 10, 10, 0.7);
             backdrop-filter: blur(4px);
@@ -50,7 +46,7 @@
 
     <canvas id="particle-canvas"></canvas>
 
-    <div class="relative-content">
+    <div class="relative-content" x-data="{ showSelector: false, selectedService: '' }">
         <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-md border-b border-white/10">
             <div class="flex justify-between items-center p-6 max-w-7xl mx-auto">
                 <div class="text-2xl font-black tracking-tighter uppercase">
@@ -64,7 +60,7 @@
                         <button @click="setLang('fr')" class="w-8 h-8 rounded-full overflow-hidden border-2" :class="lang === 'fr' ? 'border-blue-500' : 'border-transparent opacity-50'"><img src="https://flagcdn.com/w40/fr.png" class="w-full h-full object-cover"></button>
                         <button @click="setLang('de')" class="w-8 h-8 rounded-full overflow-hidden border-2" :class="lang === 'de' ? 'border-blue-500' : 'border-transparent opacity-50'"><img src="https://flagcdn.com/w40/de.png" class="w-full h-full object-cover"></button>
                     </div>
-                    <a href="#footer-funnel" class="hidden md:block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-bold transition" x-text="t[lang].navBtn"></a>
+                    <a href="#footer-funnel" @click="showSelector = true" class="hidden md:block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-bold transition" x-text="t[lang].navBtn"></a>
                 </div>
             </div>
         </nav>
@@ -85,7 +81,7 @@
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="bg-zinc-900/80 backdrop-blur-sm p-8 rounded-2xl border border-zinc-800 card-glow flex flex-col justify-between">
                     <div>
-                        <h3 class="text-xl font-bold mb-2">PACK MSA (Minimum Standard Allowed)</h3>
+                        <h3 class="text-xl font-bold mb-2 uppercase tracking-tighter">PACK MSA (Minimum Standard Allowed)</h3>
                         <p class="text-4xl font-black mb-6">50€<span class="text-sm text-gray-500"> /mo</span></p>
                         <ul class="text-gray-400 space-y-3 mb-8">
                             <li>✓ Setup Initial Pro (500€)</li>
@@ -93,11 +89,11 @@
                             <li>✓ 1 Update Hebdomadaire</li>
                         </ul>
                     </div>
-                    <a href="#footer-funnel" class="w-full bg-blue-600 text-center py-4 rounded-xl font-black hover:bg-blue-700 transition uppercase">GET NOW</a>
+                    <a href="#footer-funnel" @click="selectedService = 'msa'; showSelector = true" class="w-full bg-blue-600 text-center py-4 rounded-xl font-black hover:bg-blue-700 transition uppercase">GET NOW</a>
                 </div>
                 <div class="bg-zinc-900/80 backdrop-blur-sm p-8 rounded-2xl border border-blue-900 card-glow flex flex-col justify-between">
                     <div>
-                        <h3 class="text-xl font-bold mb-2">PACK CIK (Client Is King)</h3>
+                        <h3 class="text-xl font-bold mb-2 uppercase tracking-tighter">PACK CIK (Client Is King)</h3>
                         <p class="text-4xl font-black mb-6">100€<span class="text-sm text-gray-500"> /mo</span></p>
                         <ul class="text-gray-400 space-y-3 mb-8">
                             <li>✓ Refonte mensuelle complète</li>
@@ -105,7 +101,7 @@
                             <li>✓ Support Prioritaire VIP</li>
                         </ul>
                     </div>
-                    <a href="#footer-funnel" class="w-full bg-blue-600 text-center py-4 rounded-xl font-black hover:bg-blue-700 transition uppercase">GET NOW</a>
+                    <a href="#footer-funnel" @click="selectedService = 'cik'; showSelector = true" class="w-full bg-blue-600 text-center py-4 rounded-xl font-black hover:bg-blue-700 transition uppercase">GET NOW</a>
                 </div>
             </div>
         </section>
@@ -130,13 +126,13 @@
                         </div>
                     </div>
                     <div class="grid gap-6">
-                        <div class="bg-zinc-900/90 p-8 rounded-2xl border border-zinc-800 card-glow">
-                            <h4 class="font-bold text-xl mb-2 uppercase">Math-Logic Performance</h4>
+                        <div @click="selectedService = 'logic'; showSelector = true; window.location.hash = 'footer-funnel'" class="cursor-pointer bg-zinc-900/90 p-8 rounded-2xl border border-zinc-800 card-glow">
+                            <h4 class="font-bold text-xl mb-2 uppercase tracking-tighter">Math-Logic Performance</h4>
                             <p class="text-3xl font-black text-blue-500 mb-4">1 500€ /mo</p>
                             <p class="text-sm text-gray-400 italic">Media Buying + Bottleneck Identification + Metric Science.</p>
                         </div>
-                        <div class="bg-zinc-900/90 p-8 rounded-2xl border-2 border-blue-600 card-glow">
-                            <h4 class="font-bold text-xl mb-2 uppercase">Deepfake AI Dominance</h4>
+                        <div @click="selectedService = 'deep'; showSelector = true; window.location.hash = 'footer-funnel'" class="cursor-pointer bg-zinc-900/90 p-8 rounded-2xl border-2 border-blue-600 card-glow">
+                            <h4 class="font-bold text-xl mb-2 uppercase tracking-tighter">Deepfake AI Dominance</h4>
                             <p class="text-3xl font-black text-blue-500 mb-4">3 000€ /mo</p>
                             <p class="text-sm text-gray-400">Math-Logic + AI Clone "Deepfake" for Unlimited UGC Models.</p>
                         </div>
@@ -145,12 +141,81 @@
             </div>
         </section>
 
-        <footer id="footer-funnel" class="py-32 bg-black/40 border-t border-zinc-900 text-center" x-data="{ showSelector: false, selectedService: '' }">
+        <footer id="footer-funnel" class="py-32 bg-black/40 border-t border-zinc-900 text-center">
             <div class="max-w-5xl mx-auto px-6">
                 <h2 class="text-4xl font-black mb-12 uppercase" x-text="t[lang].footerTitle"></h2>
+                
                 <button @click="showSelector = !showSelector" class="bg-white text-black px-12 py-5 rounded-full font-black text-2xl hover:bg-blue-500 hover:text-white transition transform uppercase">
                     START NOW
                 </button>
+
+                <div x-show="showSelector" x-transition.opacity class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <button @click="selectedService = 'msa'" :class="selectedService === 'msa' ? 'border-blue-500 bg-blue-500/10' : 'border-white/10'" class="p-4 border rounded-xl hover:border-blue-500 transition">
+                        <span class="block font-black text-xs">PACK MSA</span>
+                        <span class="text-[10px] text-gray-500 uppercase">50€/mo</span>
+                    </button>
+                    <button @click="selectedService = 'cik'" :class="selectedService === 'cik' ? 'border-blue-500 bg-blue-500/10' : 'border-white/10'" class="p-4 border rounded-xl hover:border-blue-500 transition">
+                        <span class="block font-black text-xs">PACK CIK</span>
+                        <span class="text-[10px] text-gray-500 uppercase">100€/mo</span>
+                    </button>
+                    <button @click="selectedService = 'logic'" :class="selectedService === 'logic' ? 'border-blue-500 bg-blue-500/10' : 'border-white/10'" class="p-4 border rounded-xl hover:border-blue-500 transition">
+                        <span class="block font-black text-xs text-blue-500 uppercase tracking-tighter">Math-Logic</span>
+                        <span class="text-[10px] text-gray-500 uppercase">1500€/mo</span>
+                    </button>
+                    <button @click="selectedService = 'deep'" :class="selectedService === 'deep' ? 'border-blue-500 bg-blue-500/10' : 'border-white/10'" class="p-4 border rounded-xl hover:border-blue-500 transition">
+                        <span class="block font-black text-xs text-blue-500 uppercase tracking-tighter">Deepfake AI</span>
+                        <span class="text-[10px] text-gray-500 uppercase">3000€/mo</span>
+                    </button>
+                </div>
+
+                <div x-show="selectedService !== ''" x-transition:enter class="mt-12 bg-zinc-900/90 backdrop-blur-md p-6 md:p-12 rounded-3xl border border-white/10 text-left max-w-4xl mx-auto">
+                    
+                    <div class="aspect-video bg-black rounded-2xl mb-10 overflow-hidden border border-blue-500/30 flex items-center justify-center relative group">
+                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent"></div>
+                        <p class="text-zinc-600 font-black uppercase tracking-[0.3em] text-xs">VSL VIDEO : <span class="text-blue-500" x-text="selectedService"></span></p>
+                    </div>
+
+                    <div class="mb-10">
+                        <h3 class="text-xl font-bold mb-6 text-blue-500 uppercase tracking-tight">Ce que vous obtenez :</h3>
+                        <ul class="grid md:grid-cols-2 gap-4 text-gray-300">
+                            <template x-if="selectedService === 'msa'">
+                                <li class="flex items-start"><span class="text-blue-500 mr-2">▶</span> <span><b>Vitesse :</b> Temps de chargement < 1s pour maximiser votre Cr.</span></li>
+                            </template>
+                            <template x-if="selectedService === 'cik'">
+                                <li class="flex items-start"><span class="text-blue-500 mr-2">▶</span> <span><b>Dominance :</b> Un site qui convertit le trafic froid en clients royaux.</span></li>
+                            </template>
+                            <template x-if="selectedService === 'logic'">
+                                <li class="flex items-start"><span class="text-blue-500 mr-2">▶</span> <span><b>Précision :</b> Analyse granulaire de chaque étape de votre funnel.</span></li>
+                            </template>
+                            <template x-if="selectedService === 'deep'">
+                                <li class="flex items-start"><span class="text-blue-500 mr-2">▶</span> <span><b>Scale Illimité :</b> Plus besoin de tournages coûteux, l'IA produit à l'infini.</span></li>
+                            </template>
+                            <li class="flex items-start"><span class="text-blue-500 mr-2">▶</span> <span>Support technique haute performance.</span></li>
+                        </ul>
+                    </div>
+
+                    <div x-show="selectedService === 'logic' || selectedService === 'deep'" class="border-t border-white/10 pt-10">
+                        <h3 class="text-xl font-bold uppercase mb-8">Candidature de sélection stratégique</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <input type="text" placeholder="Nom Complet" class="bg-black/50 border border-white/10 p-4 rounded-xl focus:border-blue-500 outline-none">
+                            <input type="text" placeholder="Site Web / Business" class="bg-black/50 border border-white/10 p-4 rounded-xl focus:border-blue-500 outline-none">
+                            <select class="bg-black/50 border border-white/10 p-4 rounded-xl focus:border-blue-500 outline-none text-gray-500">
+                                <option>Ad Spend Mensuel actuel</option>
+                                <option>0 - 2k€</option>
+                                <option>2k - 10k€</option>
+                                <option>10k€ +</option>
+                            </select>
+                            <input type="email" placeholder="Email Professionnel" class="bg-black/50 border border-white/10 p-4 rounded-xl focus:border-blue-500 outline-none">
+                        </div>
+                        <button class="w-full bg-blue-600 py-5 rounded-2xl font-black text-xl hover:bg-blue-700 transition uppercase shadow-[0_0_20px_rgba(59,130,246,0.3)]">Réserver mon appel stratégique</button>
+                    </div>
+
+                    <div x-show="selectedService === 'msa' || selectedService === 'cik'" class="border-t border-white/10 pt-10 text-center">
+                        <button class="bg-white text-black px-12 py-5 rounded-2xl font-black text-xl hover:bg-blue-600 hover:text-white transition uppercase shadow-xl">Accéder au paiement sécurisé</button>
+                    </div>
+
+                </div>
+
                 <p class="mt-20 text-gray-700 text-[10px] tracking-widest uppercase italic">© 2026 THE SCALER'S AGENCY. HIGH PERFORMANCE ONLY.</p>
             </div>
         </footer>
@@ -170,10 +235,7 @@
             initParticles();
         }
 
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = e.x;
-            mouse.y = e.y;
-        });
+        window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
 
         class Particle {
             constructor() {
@@ -185,7 +247,6 @@
                 this.angle = Math.random() * Math.PI * 2;
             }
             update() {
-                // Vortex central discret
                 let dxC = (window.innerWidth / 2) - this.x;
                 let dyC = (window.innerHeight / 2) - this.y;
                 let distC = Math.sqrt(dxC*dxC + dyC*dyC);
@@ -198,7 +259,6 @@
                 this.y += this.vy;
                 if (this.x < 0 || this.x > window.innerWidth) this.vx *= -1;
                 if (this.y < 0 || this.y > window.innerHeight) this.vy *= -1;
-
                 if (mouse.x) {
                     let dx = mouse.x - this.x;
                     let dy = mouse.y - this.y;
@@ -211,7 +271,7 @@
                 }
             }
             draw() {
-                ctx.fillStyle = 'rgba(59, 130, 246, 0.7)'; // Bleu Tailwind
+                ctx.fillStyle = 'rgba(59, 130, 246, 0.7)';
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -232,10 +292,6 @@
                     let dist = Math.sqrt(dx*dx + dy*dy);
                     if (dist < 100) {
                         let opacity = (1 - (dist / 100)) * 0.12;
-                        if (mouse.x) {
-                            let mDist = Math.sqrt((mouse.x - particles[i].x)**2 + (mouse.y - particles[i].y)**2);
-                            if (mDist < mouse.radius) opacity += 0.2;
-                        }
                         ctx.strokeStyle = `rgba(59, 130, 246, ${opacity})`;
                         ctx.lineWidth = 0.5;
                         ctx.beginPath();
