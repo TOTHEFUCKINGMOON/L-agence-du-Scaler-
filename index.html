@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Scaler's Agency | Performance & Scale</title>
+    <title>The Scaler's Agency | Precision Growth</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
@@ -26,11 +26,11 @@
             
             <div class="flex items-center space-x-6">
                 <div class="flex space-x-2 bg-white/5 p-1 rounded-full border border-white/10">
-                    <button @click="setLang('en')" class="w-8 h-8 rounded-full overflow-hidden border-2 transition" :class="lang === 'en' ? 'border-blue-500' : 'border-transparent opacity-50 hover:opacity-100'"><img src="https://flagcdn.com/w40/gb.png" class="w-full h-full object-cover"></button>
-                    <button @click="setLang('fr')" class="w-8 h-8 rounded-full overflow-hidden border-2 transition" :class="lang === 'fr' ? 'border-blue-500' : 'border-transparent opacity-50 hover:opacity-100'"><img src="https://flagcdn.com/w40/fr.png" class="w-full h-full object-cover"></button>
-                    <button @click="setLang('de')" class="w-8 h-8 rounded-full overflow-hidden border-2 transition" :class="lang === 'de' ? 'border-blue-500' : 'border-transparent opacity-50 hover:opacity-100'"><img src="https://flagcdn.com/w40/de.png" class="w-full h-full object-cover"></button>
+                    <button @click="setLang('en')" class="w-8 h-8 rounded-full overflow-hidden border-2" :class="lang === 'en' ? 'border-blue-500' : 'border-transparent opacity-50'"><img src="https://flagcdn.com/w40/gb.png" class="w-full h-full object-cover"></button>
+                    <button @click="setLang('fr')" class="w-8 h-8 rounded-full overflow-hidden border-2" :class="lang === 'fr' ? 'border-blue-500' : 'border-transparent opacity-50'"><img src="https://flagcdn.com/w40/fr.png" class="w-full h-full object-cover"></button>
+                    <button @click="setLang('de')" class="w-8 h-8 rounded-full overflow-hidden border-2" :class="lang === 'de' ? 'border-blue-500' : 'border-transparent opacity-50'"><img src="https://flagcdn.com/w40/de.png" class="w-full h-full object-cover"></button>
                 </div>
-                <a href="#selection-area" class="hidden md:block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-bold transition" x-text="t[lang].navBtn"></a>
+                <a href="#footer-funnel" class="hidden md:block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-bold transition" x-text="t[lang].navBtn"></a>
             </div>
         </div>
     </nav>
@@ -39,7 +39,7 @@
         <h1 class="text-5xl md:text-8xl font-black mb-6 leading-tight uppercase">
             <span x-text="t[lang].hero1"></span> <span class="gradient-text" x-text="t[lang].hero2"></span>
         </h1>
-        <p class="text-gray-400 text-xl md:text-2xl mb-10 max-w-3xl mx-auto" x-text="t[lang].heroSub"></p>
+        <p class="text-gray-400 text-xl md:text-2xl mb-10 max-w-3xl mx-auto font-light" x-text="t[lang].heroSub"></p>
         <div class="flex flex-col md:flex-row justify-center gap-4">
             <a href="#services" class="bg-white text-black px-8 py-4 rounded-lg font-black text-lg hover:bg-gray-200 transition" x-text="t[lang].btnServices"></a>
             <a href="#ai" class="border border-gray-700 px-8 py-4 rounded-lg font-black text-lg hover:bg-gray-900 transition underline decoration-blue-500" x-text="t[lang].btnAi"></a>
@@ -51,28 +51,27 @@
         <div class="grid md:grid-cols-2 gap-8">
             <div class="bg-zinc-900 p-8 rounded-2xl border border-zinc-800 card-glow flex flex-col justify-between">
                 <div>
-                    <h3 class="text-xl font-bold mb-2 uppercase">Pack Minimum Standards Allowed</h3>
+                    <h3 class="text-xl font-bold mb-2">PACK MSA (Minimum Standard Allowed)</h3>
                     <p class="text-4xl font-black mb-6">50€<span class="text-sm text-gray-500"> /mo</span></p>
                     <ul class="text-gray-400 space-y-3 mb-8">
-                        <li x-text="'✓ ' + t[lang].pack1_1"></li>
-                        <li x-text="'✓ ' + t[lang].pack1_2"></li>
-                        <li x-text="'✓ ' + t[lang].pack1_3"></li>
+                        <li>✓ Setup Initial Pro (500€)</li>
+                        <li>✓ Hébergement Haute Performance</li>
+                        <li>✓ 1 Update Hebdomadaire</li>
                     </ul>
                 </div>
-                <a href="https://votre-lien-de-paiement.com/pack1" class="w-full bg-blue-600 text-center py-4 rounded-xl font-black hover:bg-blue-700 transition uppercase">GET NOW</a>
+                <a href="#footer-funnel" @click="selectedService = 'msa'; showSelector = true" class="w-full bg-blue-600 text-center py-4 rounded-xl font-black hover:bg-blue-700 transition uppercase">GET NOW</a>
             </div>
-            <div class="bg-zinc-900 p-8 rounded-2xl border border-blue-900 card-glow relative overflow-hidden flex flex-col justify-between">
-                <div class="absolute top-0 right-0 bg-blue-600 text-[10px] px-3 py-1 font-bold uppercase">Best Value</div>
+            <div class="bg-zinc-900 p-8 rounded-2xl border border-blue-900 card-glow flex flex-col justify-between">
                 <div>
-                    <h3 class="text-xl font-bold mb-2 uppercase">Pack Client Is King</h3>
+                    <h3 class="text-xl font-bold mb-2">PACK CIK (Client Is King)</h3>
                     <p class="text-4xl font-black mb-6">100€<span class="text-sm text-gray-500"> /mo</span></p>
                     <ul class="text-gray-400 space-y-3 mb-8">
-                        <li x-text="'✓ ' + t[lang].pack2_1"></li>
-                        <li x-text="'✓ ' + t[lang].pack2_2"></li>
-                        <li x-text="'✓ ' + t[lang].pack2_3"></li>
+                        <li>✓ Refonte mensuelle complète</li>
+                        <li>✓ 3 Updates simultanées / semaine</li>
+                        <li>✓ Support Prioritaire VIP</li>
                     </ul>
                 </div>
-                <a href="https://votre-lien-de-paiement.com/pack2" class="w-full bg-blue-600 text-center py-4 rounded-xl font-black hover:bg-blue-700 transition uppercase">GET NOW</a>
+                <a href="#footer-funnel" @click="selectedService = 'cik'; showSelector = true" class="w-full bg-blue-600 text-center py-4 rounded-xl font-black hover:bg-blue-700 transition uppercase">GET NOW</a>
             </div>
         </div>
     </section>
@@ -85,69 +84,112 @@
                     <h3 class="text-4xl font-black mb-6 leading-tight uppercase">
                         <span x-text="t[lang].aiTitle1"></span> <br><span class="text-blue-500" x-text="t[lang].aiTitle2"></span>
                     </h3>
-                    <p class="text-gray-400 mb-6" x-text="t[lang].aiDesc"></p>
-                    <div class="bg-blue-600/10 border border-blue-500/30 p-6 rounded-xl">
-                        <p class="italic text-blue-200" x-text="t[lang].quote"></p>
+                    <div class="bg-blue-600/10 border border-blue-500/30 p-8 rounded-xl">
+                        <p class="text-gray-200 mb-6 leading-relaxed" x-text="t[lang].aiDesc"></p>
+                        <p class="italic text-blue-200 mb-6" x-text="t[lang].quote"></p>
+                        <div class="py-6 border-t border-white/10 text-center">
+                            <div class="text-3xl md:text-4xl font-mono text-blue-400 mb-2 tracking-tighter">
+                                ∑(V × Cr) / (CPA + m) = ROI∞
+                            </div>
+                            <p class="text-[10px] text-gray-500 uppercase tracking-widest" x-text="t[lang].mathJoke"></p>
+                        </div>
                     </div>
                 </div>
                 <div class="grid gap-6">
                     <div class="bg-zinc-900 p-8 rounded-2xl border border-zinc-800 card-glow">
-                        <h4 class="font-bold text-xl mb-2" x-text="t[lang].service1Title"></h4>
+                        <h4 class="font-bold text-xl mb-2 uppercase">Math-Logic Performance</h4>
                         <p class="text-3xl font-black text-blue-500 mb-4">1 500€ /mo</p>
-                        <p class="text-sm text-gray-400 italic" x-text="t[lang].service1Desc"></p>
+                        <p class="text-sm text-gray-400 italic">Media Buying + Bottleneck Identification + Metric Science.</p>
                     </div>
                     <div class="bg-zinc-900 p-8 rounded-2xl border-2 border-blue-600 card-glow">
-                        <h4 class="font-bold text-xl mb-2" x-text="t[lang].service2Title"></h4>
+                        <h4 class="font-bold text-xl mb-2 uppercase">Deepfake AI Dominance</h4>
                         <p class="text-3xl font-black text-blue-500 mb-4">3 000€ /mo</p>
-                        <p class="text-sm text-gray-400" x-text="t[lang].service2Desc"></p>
+                        <p class="text-sm text-gray-400">Math-Logic + AI Clone "Deepfake" for Unlimited UGC Models.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact" class="py-20 text-center border-t border-zinc-900 bg-black" x-data="{ showSelector: false, selectedService: '' }">
-        <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-3xl font-black mb-8 uppercase" x-text="t[lang].footerTitle"></h2>
+    <footer id="footer-funnel" class="py-32 bg-black border-t border-zinc-900 text-center" x-data="{ showSelector: false, selectedService: '' }">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-4xl font-black mb-12 uppercase" x-text="t[lang].footerTitle"></h2>
             
-            <button @click="showSelector = !showSelector" class="bg-white text-black px-12 py-5 rounded-full font-black text-xl hover:scale-105 transition transform uppercase">
+            <button @click="showSelector = !showSelector" class="bg-white text-black px-12 py-5 rounded-full font-black text-2xl hover:bg-blue-500 hover:text-white transition transform uppercase">
                 START NOW
             </button>
 
-            <div x-show="showSelector" x-transition class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
-                <button @click="selectedService = 'low'" class="p-6 bg-zinc-900 border border-white/10 rounded-xl hover:border-blue-500 transition">
-                    <span class="block font-black text-blue-500">LOW TICKET</span>
-                    <span class="text-sm text-gray-400">Web Infrastructure & Support</span>
+            <div x-show="showSelector" x-transition class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <button @click="selectedService = 'msa'" :class="selectedService === 'msa' ? 'border-blue-500 bg-blue-500/10' : 'border-white/10'" class="p-4 border rounded-xl hover:border-blue-500 transition">
+                    <span class="block font-black text-xs">PACK MSA</span>
+                    <span class="text-[10px] text-gray-500 uppercase">50€/mo</span>
                 </button>
-                <button @click="selectedService = 'high'" class="p-6 bg-zinc-900 border border-white/10 rounded-xl hover:border-blue-500 transition">
-                    <span class="block font-black text-blue-500">HIGH TICKET</span>
-                    <span class="text-sm text-gray-400">Scientific Media Buying & AI UGC</span>
+                <button @click="selectedService = 'cik'" :class="selectedService === 'cik' ? 'border-blue-500 bg-blue-500/10' : 'border-white/10'" class="p-4 border rounded-xl hover:border-blue-500 transition">
+                    <span class="block font-black text-xs">PACK CIK</span>
+                    <span class="text-[10px] text-gray-500 uppercase">100€/mo</span>
+                </button>
+                <button @click="selectedService = 'logic'" :class="selectedService === 'logic' ? 'border-blue-500 bg-blue-500/10' : 'border-white/10'" class="p-4 border rounded-xl hover:border-blue-500 transition text-blue-500">
+                    <span class="block font-black text-xs uppercase tracking-tighter">Math-Logic Performance</span>
+                    <span class="text-[10px] text-gray-500 uppercase">1500€/mo</span>
+                </button>
+                <button @click="selectedService = 'deep'" :class="selectedService === 'deep' ? 'border-blue-500 bg-blue-500/10' : 'border-white/10'" class="p-4 border rounded-xl hover:border-blue-500 transition text-blue-500">
+                    <span class="block font-black text-xs uppercase tracking-tighter">Deepfake AI Dominance</span>
+                    <span class="text-[10px] text-gray-500 uppercase">3000€/mo</span>
                 </button>
             </div>
 
-            <div id="selection-area" x-show="selectedService !== ''" x-transition class="mt-12 p-8 bg-zinc-900 rounded-3xl border border-blue-900/30 text-left">
-                <div class="aspect-video bg-zinc-800 rounded-xl mb-8 flex items-center justify-center border border-white/5">
-                    <span class="text-gray-500 font-bold uppercase tracking-widest">Video VSL - Product Proof</span>
+            <div x-show="selectedService !== ''" x-transition class="mt-12 bg-zinc-900 p-10 rounded-3xl border border-white/5 text-left max-w-4xl mx-auto">
+                
+                <div class="aspect-video bg-zinc-800 rounded-2xl mb-10 overflow-hidden border border-white/10 flex items-center justify-center">
+                    <p class="text-zinc-600 font-black uppercase tracking-[0.3em]">VSL VIDEO : <span x-text="selectedService"></span></p>
                 </div>
 
-                <div x-show="selectedService === 'low'" class="text-center">
-                    <h3 class="text-2xl font-black mb-4 uppercase">READY TO SECURE YOUR INFRASTRUCTURE?</h3>
-                    <p class="text-gray-400 mb-8">Access our high-performance systems instantly.</p>
-                    <a href="https://votre-lien-de-paiement.com" class="inline-block bg-blue-600 px-10 py-4 rounded-full font-black hover:bg-blue-700 transition uppercase">Go to Secure Checkout</a>
+                <div class="mb-10">
+                    <h3 class="text-xl font-bold mb-6 text-blue-500 uppercase">Inclus dans l'offre :</h3>
+                    <ul class="grid md:grid-cols-2 gap-4 text-gray-300">
+                        <template x-if="selectedService === 'msa'">
+                            <li class="flex items-start"><span class="text-blue-500 mr-2">▶</span> <b>Infrastructure Pro :</b> Un site qui ne crash jamais sous la charge publicitaire.</li>
+                        </template>
+                        <template x-if="selectedService === 'cik'">
+                            <li class="flex items-start"><span class="text-blue-500 mr-2">▶</span> <b>Agilité Totale :</b> Modifiez vos offres en temps réel selon les retours du marché.</li>
+                        </template>
+                        <template x-if="selectedService === 'logic'">
+                            <li class="flex items-start"><span class="text-blue-500 mr-2">▶</span> <b>Math Precision :</b> On identifie la fuite de cash exacte dans votre funnel.</li>
+                        </template>
+                        <template x-if="selectedService === 'deep'">
+                            <li class="flex items-start"><span class="text-blue-500 mr-2">▶</span> <b>Unlimited UGC :</b> Vos clones IA tournent des pubs 24/7 sans fatigue.</li>
+                        </template>
+                    </ul>
                 </div>
 
-                <div x-show="selectedService === 'high'" class="text-center">
-                    <h3 class="text-2xl font-black mb-4 uppercase">STOP GUESSING. START CALCULATING.</h3>
-                    <p class="text-gray-400 mb-8">Book your scientific strategy call to unlock your flow.</p>
-                    <div class="bg-black/50 p-6 rounded-xl border border-white/10 mb-8 max-w-md mx-auto">
-                        <p class="text-sm text-blue-400 font-mono mb-4 italic">"Identify bottlenecks using real math equations."</p>
-                        <button class="w-full bg-white text-black py-4 rounded-lg font-black hover:bg-blue-500 hover:text-white transition uppercase">Book My Strategy Call</button>
+                <template x-if="selectedService === 'logic' || selectedService === 'deep'">
+                    <form class="space-y-6 border-t border-white/10 pt-10">
+                        <h3 class="text-xl font-bold uppercase mb-4">Questionnaire de Sélection</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <input type="text" placeholder="Nom complet" class="bg-black border border-white/10 p-4 rounded-lg focus:border-blue-500 outline-none">
+                            <input type="text" placeholder="URL de votre business" class="bg-black border border-white/10 p-4 rounded-lg focus:border-blue-500 outline-none">
+                            <select class="bg-black border border-white/10 p-4 rounded-lg focus:border-blue-500 outline-none text-gray-500">
+                                <option>Budget Publicitaire Mensuel</option>
+                                <option>2k - 5k€</option>
+                                <option>5k - 20k€</option>
+                                <option>20k€ +</option>
+                            </select>
+                            <input type="email" placeholder="Email pro" class="bg-black border border-white/10 p-4 rounded-lg focus:border-blue-500 outline-none">
+                        </div>
+                        <button class="w-full bg-blue-600 py-5 rounded-xl font-black text-xl hover:bg-blue-700 transition uppercase">BOOK STRATEGY CALL</button>
+                    </form>
+                </template>
+
+                <template x-if="selectedService === 'msa' || selectedService === 'cik'">
+                    <div class="border-t border-white/10 pt-10 text-center">
+                        <button class="bg-white text-black px-12 py-5 rounded-xl font-black text-xl hover:bg-blue-500 hover:text-white transition uppercase">GET NOW - SECURE PAYMENT</button>
                     </div>
-                </div>
-            </div>
+                </template>
 
-            <p class="mt-20 text-gray-600 text-sm">© 2026 THE SCALER'S AGENCY. All Rights Reserved.</p>
+            </div>
         </div>
+
+        <p class="mt-20 text-gray-700 text-[10px] tracking-widest uppercase italic">© 2026 THE SCALER'S AGENCY. HIGH PERFORMANCE ONLY.</p>
     </footer>
 
     <a href="https://wa.me/YOURNUMBER" target="_blank" class="fixed bottom-8 right-8 z-[100] bg-blue-600 w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition cursor-pointer">
@@ -168,75 +210,45 @@
                         btnServices: "VOIR NOS SOLUTIONS",
                         btnAi: "DÉCOUVRIR L'UGC-IA",
                         sectionWeb: "INFRASTRUCTURE WEB",
-                        pack1_1: "Création de site (Setup 500€)",
-                        pack1_2: "Hébergement Haute Performance",
-                        pack1_3: "1 Update hebdomadaire",
-                        pack2_1: "Refonte complète mensuelle",
-                        pack2_2: "3 Updates simultanées / semaine",
-                        pack2_3: "Priorité absolue sur le support",
                         sectionScale: "PERFORMANCE & SCALE",
                         aiTitle1: "DEEPFAKE IA & MATHS DE PRÉCISION",
                         aiTitle2: "VOTRE R.O.A.S.",
                         aiDesc: "Des modèles UGC synthétiques IA de qualité 'Deepfake' et des scripts stratégiques conçus pour exploser les conversions sans coûts de tournage.",
                         quote: "Ma méthode utilise de réelles équations mathématiques pour identifier les bottlenecks précis et arrêter les tests 'hypothétiques'. J'ouvre le flux, vous encaissez.",
-                        service1Title: "Media Buying Pure",
-                        service1Desc: "Gestion TikTok/IG/FB + Analyse des bottlenecks + Optimisation des métriques.",
-                        service2Title: "The Full Scale (IA + Media)",
-                        service2Desc: "Media Buying + Scripts Stratégiques + Création de publicités via IA (UGC Models).",
+                        mathJoke: "Je tiens à vous prévenir que ceci n'est pas la formule exacte, mais elle s'en rapproche.",
                         footerTitle: "PRÊT À PASSER AU NIVEAU SUPÉRIEUR ?",
-                        footerBtn: "START NOW"
                     },
                     en: {
                         navBtn: "Get Scaled",
                         hero1: "YOUR GROWTH IS NOT BY",
                         hero2: "ACCIDENT.",
-                        heroSub: "We break funnel bottlenecks through precision ad engineering and deepfake-quality AI assets.",
+                        heroSub: "We engineering scaling through real mathematical formulas and deepfake-quality AI ads.",
                         btnServices: "OUR SOLUTIONS",
                         btnAi: "DISCOVER AI-UGC",
                         sectionWeb: "WEB INFRASTRUCTURE",
-                        pack1_1: "Website Creation (€500 Setup)",
-                        pack1_2: "High Performance Hosting",
-                        pack1_3: "1 Weekly Update",
-                        pack2_1: "Full Monthly Redesign",
-                        pack2_2: "3 Simultaneous Updates / week",
-                        pack2_3: "Absolute Priority Support",
                         sectionScale: "PERFORMANCE & SCALE",
                         aiTitle1: "DEEPFAKE AI & MATH PRECISION",
                         aiTitle2: "YOUR R.O.A.S.",
                         aiDesc: "'Deepfake' quality synthetic AI UGC models and strategic scripts designed to explode conversions without filming costs.",
                         quote: "My method use real mathematic equations to identifies exact funnel bottlenecks and stop testing 'hypothetically'. I unlock the flow, you collect the profits.",
-                        service1Title: "Pure Media Buying",
-                        service1Desc: "TikTok/IG/FB Management + Bottleneck Analysis + Metrics Optimization.",
-                        service2Title: "The Full Scale (AI + Media)",
-                        service2Desc: "Media Buying + Strategic Scripts + AI Ad Creation (UGC Models).",
+                        mathJoke: "I must warn you: this is not the actual formula we use, but it looks like it.",
                         footerTitle: "READY TO REACH THE NEXT LEVEL?",
-                        footerBtn: "START NOW"
                     },
                     de: {
                         navBtn: "Jetzt Scalen",
                         hero1: "IHR WACHSTUM IST KEIN",
                         hero2: "ZUFALL.",
-                        heroSub: "Wir lösen Blockaden in Ihrem Funnel durch mathematische Präzision und Deepfake-KI.",
+                        heroSub: "Wir entwickeln Wachstum durch mathematische Formeln und KI-Anzeigen in Deepfake-Qualität.",
                         btnServices: "UNSERE LÖSUNGEN",
                         btnAi: "KI-UGC ENTDECKEN",
                         sectionWeb: "WEB-INFRASTRUKTUR",
-                        pack1_1: "Webseiten-Erstellung (500€ Setup)",
-                        pack1_2: "Hochleistungs-Hosting",
-                        pack1_3: "1 Wöchentliches Update",
-                        pack2_1: "Vollständiges monatliches Redesign",
-                        pack2_2: "3 Simultane Updates / Woche",
-                        pack2_3: "Absoluter Prioritäts-Support",
                         sectionScale: "PERFORMANCE & SCALE",
                         aiTitle1: "DEEPFAKE KI & MATHE-PRÄZISION",
                         aiTitle2: "IHR R.O.A.S.",
-                        aiDesc: "KI-generierte UGC-Modelle in 'Deepfake'-Qualität für maximale Konversion.",
+                        aiDesc: "KI-generierte UGC-Modelle in 'Deepfake'-Qualität pour maximale Konversion.",
                         quote: "Meine Methode nutzt echte mathematische Gleichungen, um Engpässe zu identifizieren.",
-                        service1Title: "Pure Media Buying",
-                        service1Desc: "TikTok/IG/FB Management + Metriken-Optimierung.",
-                        service2Title: "The Full Scale (KI + Media)",
-                        service2Desc: "Media Buying + Strategische Skripte + KI-Werbeerstellung.",
-                        footerTitle: "BEREIT FÜR DAS NÄCHSTE LEVEL?",
-                        footerBtn: "START NOW"
+                        mathJoke: "Ich muss Sie warnen: Dies ist nicht die tatsächliche Formel, aber sie sieht so aus.",
+                        footerTitle: "BEREIT ZU SCALEN?",
                     }
                 }
             }
