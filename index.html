@@ -3,103 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Scalers Agency | Performance & Scale</title>
+    <title>The Scaler's Agency | Precision Growth</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
         [x-cloak] { display: none !important; }
-        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #ffffff; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #ffffff; overflow-x: hidden; }
+        
         .gradient-text { background: linear-gradient(90deg, #fff, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .card-glow:hover { box-shadow: 0 0 20px rgba(59, 130, 246, 0.2); border-color: #3b82f6; transition: all 0.3s ease; }
+        
+        /* Animation d'entrée */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Effet de glow subtil sur les cartes */
+        .card-glow { transition: all 0.4s ease; border: 1px solid rgba(255,255,255,0.1); }
+        .card-glow:hover { border-color: #3b82f6; box-shadow: 0 0 30px rgba(59, 130, 246, 0.15); transform: translateY(-5px); }
+        
+        /* Chat Bubble Animation */
+        .chat-pulse { animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(59, 130, 246, 0); } 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); } }
     </style>
 </head>
-<body class="antialiased" x-data="languageManager()" x-cloak>
+<body x-data="languageManager()" x-init="initAnimations()">
 
-    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
-        <div class="flex justify-between items-center p-6 max-w-7xl mx-auto">
-            <div class="text-2xl font-black tracking-tighter">THE SCALERS<span class="text-blue-500">.</span></div>
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-xl border-b border-white/5">
+        <div class="flex justify-between items-center p-5 max-w-7xl mx-auto">
+            <div class="text-xl md:text-2xl font-black tracking-tighter">
+                THE SCALER<span class="text-blue-500 text-3xl">'</span>S AGENCY
+            </div>
             
             <div class="flex items-center space-x-6">
                 <div class="flex space-x-2 bg-white/5 p-1 rounded-full border border-white/10">
-                    <button @click="setLang('en')" class="w-8 h-8 rounded-full overflow-hidden border-2 transition" :class="lang === 'en' ? 'border-blue-500' : 'border-transparent opacity-50 hover:opacity-100'"><img src="https://flagcdn.com/w40/gb.png" class="w-full h-full object-cover"></button>
-                    <button @click="setLang('fr')" class="w-8 h-8 rounded-full overflow-hidden border-2 transition" :class="lang === 'fr' ? 'border-blue-500' : 'border-transparent opacity-50 hover:opacity-100'"><img src="https://flagcdn.com/w40/fr.png" class="w-full h-full object-cover"></button>
-                    <button @click="setLang('de')" class="w-8 h-8 rounded-full overflow-hidden border-2 transition" :class="lang === 'de' ? 'border-blue-500' : 'border-transparent opacity-50 hover:opacity-100'"><img src="https://flagcdn.com/w40/de.png" class="w-full h-full object-cover"></button>
+                    <button @click="setLang('en')" class="w-7 h-7 rounded-full overflow-hidden border-2 transition" :class="lang === 'en' ? 'border-blue-500' : 'border-transparent opacity-40'"><img src="https://flagcdn.com/w40/gb.png" class="w-full h-full object-cover"></button>
+                    <button @click="setLang('fr')" class="w-7 h-7 rounded-full overflow-hidden border-2 transition" :class="lang === 'fr' ? 'border-blue-500' : 'border-transparent opacity-40'"><img src="https://flagcdn.com/w40/fr.png" class="w-full h-full object-cover"></button>
+                    <button @click="setLang('de')" class="w-7 h-7 rounded-full overflow-hidden border-2 transition" :class="lang === 'de' ? 'border-blue-500' : 'border-transparent opacity-40'"><img src="https://flagcdn.com/w40/de.png" class="w-full h-full object-cover"></button>
                 </div>
-                <a href="#contact" class="hidden md:block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-bold transition" x-text="t[lang].navBtn"></a>
+                <a href="#contact-form" class="hidden md:block bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full font-bold text-sm transition" x-text="t[lang].navBtn"></a>
             </div>
         </div>
     </nav>
 
-    <header class="pt-40 pb-20 px-6 text-center max-w-5xl mx-auto">
-        <h1 class="text-5xl md:text-8xl font-black mb-6 leading-tight uppercase">
-            <span x-text="t[lang].hero1"></span> <span class="gradient-text" x-text="t[lang].hero2"></span>
-        </h1>
-        <p class="text-gray-400 text-xl md:text-2xl mb-10 max-w-3xl mx-auto" x-text="t[lang].heroSub"></p>
-        <div class="flex flex-col md:flex-row justify-center gap-4">
-            <a href="#services" class="bg-white text-black px-8 py-4 rounded-lg font-black text-lg hover:bg-gray-200 transition" x-text="t[lang].btnServices"></a>
-            <a href="#ai" class="border border-gray-700 px-8 py-4 rounded-lg font-black text-lg hover:bg-gray-900 transition underline decoration-blue-500" x-text="t[lang].btnAi"></a>
+    <header class="relative min-h-screen flex flex-col justify-center pt-20 px-6 text-center max-w-6xl mx-auto">
+        <div class="reveal">
+            <h1 class="text-5xl md:text-8xl font-black mb-8 leading-tight uppercase tracking-tighter">
+                <span x-text="t[lang].hero1"></span> <br><span class="gradient-text" x-text="t[lang].hero2"></span>
+            </h1>
+            <p class="text-gray-400 text-xl md:text-2xl mb-12 max-w-3xl mx-auto font-light" x-text="t[lang].heroSub"></p>
+            <div class="flex flex-col md:flex-row justify-center gap-5">
+                <a href="#contact-form" class="bg-blue-600 text-white px-10 py-5 rounded-xl font-black text-lg hover:bg-blue-700 transition transform hover:scale-105" x-text="t[lang].footerBtn"></a>
+                <a href="#services" class="border border-white/20 px-10 py-5 rounded-xl font-black text-lg hover:bg-white/5 transition" x-text="t[lang].btnServices"></a>
+            </div>
         </div>
     </header>
 
-    <section id="services" class="py-20 max-w-7xl mx-auto px-6">
-        <h2 class="text-3xl font-bold mb-12 border-l-4 border-blue-600 pl-4 uppercase" x-text="t[lang].sectionWeb"></h2>
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-zinc-900 p-8 rounded-2xl border border-zinc-800 card-glow">
-                <h3 class="text-xl font-bold mb-2">Pack Minimum Standards Allowed</h3>
-                <p class="text-4xl font-black mb-6">50€<span class="text-sm text-gray-500"> /monat</span></p>
-                <ul class="text-gray-400 space-y-3 mb-8">
-                    <li x-text="'✓ ' + t[lang].pack1_1"></li>
-                    <li x-text="'✓ ' + t[lang].pack1_2"></li>
-                    <li x-text="'✓ ' + t[lang].pack1_3"></li>
+    <section id="services" class="py-32 max-w-7xl mx-auto px-6">
+        <h2 class="reveal text-sm font-bold tracking-[0.3em] text-blue-500 mb-4 uppercase" x-text="t[lang].sectionWeb"></h2>
+        <div class="grid md:grid-cols-2 gap-10">
+            <div class="reveal bg-zinc-900/50 p-10 rounded-3xl card-glow">
+                <h3 class="text-2xl font-bold mb-4">Minimum Standards Allowed</h3>
+                <p class="text-5xl font-black mb-8">50€<span class="text-lg text-gray-500 font-normal"> /mo</span></p>
+                <ul class="text-gray-400 space-y-4 mb-10 text-lg">
+                    <li x-text="'• ' + t[lang].pack1_1"></li>
+                    <li x-text="'• ' + t[lang].pack1_2"></li>
+                    <li x-text="'• ' + t[lang].pack1_3"></li>
                 </ul>
             </div>
-            <div class="bg-zinc-900 p-8 rounded-2xl border border-blue-900 card-glow relative overflow-hidden">
-                <div class="absolute top-0 right-0 bg-blue-600 text-[10px] px-3 py-1 font-bold uppercase">Best Value</div>
-                <h3 class="text-xl font-bold mb-2">Pack Client Is King</h3>
-                <p class="text-4xl font-black mb-6" x-text="t[lang].customPrice"></p>
-                <ul class="text-gray-400 space-y-3 mb-8">
-                    <li x-text="'✓ ' + t[lang].pack2_1"></li>
-                    <li x-text="'✓ ' + t[lang].pack2_2"></li>
-                    <li x-text="'✓ ' + t[lang].pack2_3"></li>
+            <div class="reveal bg-zinc-900/50 p-10 rounded-3xl card-glow border-blue-600/30">
+                <h3 class="text-2xl font-bold mb-4">Client Is King</h3>
+                <p class="text-5xl font-black mb-8" x-text="t[lang].customPrice"></p>
+                <ul class="text-gray-400 space-y-4 mb-10 text-lg">
+                    <li x-text="'• ' + t[lang].pack2_1"></li>
+                    <li x-text="'• ' + t[lang].pack2_2"></li>
+                    <li x-text="'• ' + t[lang].pack2_3"></li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <section id="ai" class="py-20 bg-zinc-950 px-6">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold mb-12 text-right border-r-4 border-blue-600 pr-4 uppercase" x-text="t[lang].sectionScale"></h2>
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h3 class="text-4xl font-black mb-6 leading-tight uppercase">
-                        <span x-text="t[lang].aiTitle1"></span> <br><span class="text-blue-500" x-text="t[lang].aiTitle2"></span>
-                    </h3>
-                    <p class="text-gray-400 mb-6" x-text="t[lang].aiDesc"></p>
-                    <div class="bg-blue-600/10 border border-blue-500/30 p-6 rounded-xl">
-                        <p class="italic text-blue-200" x-text="t[lang].quote"></p>
-                    </div>
+    <section id="ai" class="py-32 bg-zinc-950 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+            <div class="reveal">
+                <h2 class="text-sm font-bold tracking-[0.3em] text-blue-500 mb-4 uppercase" x-text="t[lang].sectionScale"></h2>
+                <h3 class="text-5xl font-black mb-8 leading-tight">
+                    <span x-text="t[lang].aiTitle1"></span> <br><span class="text-blue-600" x-text="t[lang].aiTitle2"></span>
+                </h3>
+                <p class="text-gray-400 text-lg mb-8" x-text="t[lang].aiDesc"></p>
+                <div class="bg-blue-600/5 border-l-4 border-blue-600 p-8 rounded-r-2xl">
+                    <p class="italic text-xl text-gray-200" x-text="t[lang].quote"></p>
                 </div>
-                <div class="grid gap-6">
-                    <div class="bg-zinc-900 p-8 rounded-2xl border border-zinc-800 hover:border-blue-500 transition">
-                        <h4 class="font-bold text-xl mb-2" x-text="t[lang].service1Title"></h4>
-                        <p class="text-3xl font-black text-blue-500 mb-4">1 500€ /mois</p>
-                        <p class="text-sm text-gray-400 italic" x-text="t[lang].service1Desc"></p>
-                    </div>
-                    <div class="bg-zinc-900 p-8 rounded-2xl border-2 border-blue-600 shadow-[0_0_30px_rgba(59,130,246,0.1)]">
-                        <h4 class="font-bold text-xl mb-2" x-text="t[lang].service2Title"></h4>
-                        <p class="text-3xl font-black text-blue-500 mb-4">3 000€ /mois</p>
-                        <p class="text-sm text-gray-400" x-text="t[lang].service2Desc"></p>
-                    </div>
+            </div>
+            <div class="grid gap-8">
+                <div class="reveal bg-zinc-900 p-8 rounded-2xl card-glow">
+                    <h4 class="font-bold text-xl mb-2" x-text="t[lang].service1Title"></h4>
+                    <p class="text-3xl font-black text-blue-500 mb-4">1 500€ /mo</p>
+                    <p class="text-gray-400 italic" x-text="t[lang].service1Desc"></p>
+                </div>
+                <div class="reveal bg-blue-600 p-8 rounded-2xl shadow-2xl shadow-blue-900/20">
+                    <h4 class="font-bold text-xl mb-2 text-white" x-text="t[lang].service2Title"></h4>
+                    <p class="text-3xl font-black text-white mb-4">3 000€ /mo</p>
+                    <p class="text-blue-100" x-text="t[lang].service2Desc"></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact" class="py-20 text-center border-t border-zinc-900">
-        <h2 class="text-3xl font-black mb-8 uppercase" x-text="t[lang].footerTitle"></h2>
-        <button class="bg-white text-black px-12 py-5 rounded-full font-black text-xl hover:scale-105 transition transform" x-text="t[lang].footerBtn"></button>
-        <p class="mt-12 text-gray-600 text-sm">© 2026 The Scalers Agency. All Rights Reserved.</p>
+    <section id="contact-form" class="py-32 px-6 max-w-4xl mx-auto text-center">
+        <div class="reveal">
+            <h2 class="text-5xl font-black mb-6 uppercase" x-text="t[lang].footerTitle"></h2>
+            <p class="text-gray-400 mb-12" x-text="t[lang].heroSub"></p>
+            <form class="grid grid-cols-1 gap-4 text-left">
+                <input type="text" placeholder="Full Name" class="bg-zinc-900 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-blue-500 transition">
+                <input type="email" placeholder="Business Email" class="bg-zinc-900 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-blue-500 transition">
+                <textarea placeholder="Tell us about your bottleneck..." rows="4" class="bg-zinc-900 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-blue-500 transition"></textarea>
+                <button type="submit" class="bg-white text-black font-black py-5 rounded-xl text-xl hover:bg-blue-500 hover:text-white transition">SUBMIT REQUEST</button>
+            </form>
+        </div>
+    </section>
+
+    <a href="https://wa.me/YOURNUMBER" target="_blank" class="fixed bottom-8 right-8 z-[100] bg-blue-600 w-16 h-16 rounded-full flex items-center justify-center shadow-2xl chat-pulse hover:scale-110 transition-transform cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        </svg>
+    </a>
+
+    <footer class="py-10 text-center border-t border-white/5 text-gray-600 text-sm">
+        © 2026 THE SCALER'S AGENCY. HIGH PERFORMANCE ONLY.
     </footer>
 
     <script>
@@ -107,87 +138,92 @@
             return {
                 lang: localStorage.getItem('scalerLang') || 'fr',
                 setLang(l) { this.lang = l; localStorage.setItem('scalerLang', l); },
+                initAnimations() {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) entry.target.classList.add('active');
+                        });
+                    }, { threshold: 0.1 });
+                    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+                },
                 t: {
                     fr: {
                         navBtn: "Scalez maintenant",
-                        hero1: "VOTRE CROISSANCE N'EST PAS UN",
-                        hero2: "HASARD.",
-                        heroSub: "Nous brisons les bottlenecks de votre funnel grâce à une ingénierie publicitaire de précision et des assets IA de nouvelle génération.",
-                        btnServices: "VOIR NOS SOLUTIONS",
-                        btnAi: "DÉCOUVRIR L'UGC-IA",
+                        hero1: "VOTRE CROISSANCE N'EST PAS",
+                        hero2: "UN HASARD.",
+                        heroSub: "Nous brisons les bottlenecks de votre funnel grâce à une ingénierie publicitaire de précision et des modèles IA UGC.",
+                        btnServices: "NOS SOLUTIONS",
                         sectionWeb: "INFRASTRUCTURE WEB",
                         pack1_1: "Création de site (Setup 500€)",
                         pack1_2: "Hébergement Haute Performance",
                         pack1_3: "1 Update hebdomadaire",
                         customPrice: "Sur Mesure",
-                        pack2_1: "Refonte complète mensuelle",
-                        pack2_2: "3 Updates simultanées / semaine",
-                        pack2_3: "Priorité absolue sur le support",
+                        pack2_1: "Refonte mensuelle incluse",
+                        pack2_2: "3 Updates / semaine",
+                        pack2_3: "Support VIP Prioritaire",
                         sectionScale: "PERFORMANCE & SCALE",
                         aiTitle1: "L'IA AU SERVICE DE",
                         aiTitle2: "VOTRE R.O.A.S.",
-                        aiDesc: "Nous utilisons notre propre technologie d'IA pour générer des scripts et des modèles UGC synthétiques qui convertissent 3x plus que la moyenne.",
-                        quote: "Ma méthode exclusive identifie les bottlenecks précis de votre funnel. Je débloque le flux, vous encaissez les profits.",
+                        aiDesc: "Modèles UGC synthétiques et scripts stratégiques conçus pour exploser vos conversions sans coûts de tournage.",
+                        quote: "Ma méthode identifie les bottlenecks précis de votre funnel. Je débloque le flux, vous encaissez.",
                         service1Title: "Media Buying Pure",
-                        service1Desc: "Gestion TikTok/IG/FB + Analyse des bottlenecks + Optimisation des métriques.",
-                        service2Title: "The Full Scale (IA + Media)",
-                        service2Desc: "Media Buying + Scripts Stratégiques + Création de publicités via IA (UGC Models).",
-                        footerTitle: "PRÊT À PASSER AU NIVEAU SUPÉRIEUR ?",
-                        footerBtn: "DÉMARRER MAINTENANT"
+                        service1Desc: "Gestion TikTok/IG/FB + Analyse des bottlenecks.",
+                        service2Title: "Full Scale (IA + Media)",
+                        service2Desc: "Media Buying + Création de publicités via IA (Modèles UGC).",
+                        footerTitle: "PRÊT À SCALER ?",
+                        footerBtn: "START NOW"
                     },
                     en: {
                         navBtn: "Get Scaled",
-                        hero1: "YOUR GROWTH IS NOT BY",
-                        hero2: "ACCIDENT.",
-                        heroSub: "We break your funnel bottlenecks through precision ad engineering and next-gen AI assets.",
+                        hero1: "YOUR GROWTH IS NOT",
+                        hero2: "BY ACCIDENT.",
+                        heroSub: "We break funnel bottlenecks through precision ad engineering and next-gen AI assets.",
                         btnServices: "OUR SOLUTIONS",
-                        btnAi: "DISCOVER AI-UGC",
                         sectionWeb: "WEB INFRASTRUCTURE",
                         pack1_1: "Website Creation (€500 Setup)",
-                        pack1_2: "High Performance Hosting",
+                        pack1_2: "High-Performance Hosting",
                         pack1_3: "1 Weekly Update",
                         customPrice: "Custom",
-                        pack2_1: "Full Monthly Redesign",
-                        pack2_2: "3 Simultaneous Updates / week",
-                        pack2_3: "Absolute Priority Support",
+                        pack2_1: "Monthly Redesign Included",
+                        pack2_2: "3 Updates / week",
+                        pack2_3: "VIP Priority Support",
                         sectionScale: "PERFORMANCE & SCALE",
                         aiTitle1: "AI POWERING",
                         aiTitle2: "YOUR R.O.A.S.",
-                        aiDesc: "We use our proprietary AI tech to generate scripts and synthetic UGC models that convert 3x better than average.",
-                        quote: "My exclusive method identifies the exact bottlenecks in your funnel. I unlock the flow, you collect the profits.",
+                        aiDesc: "Synthetic UGC models and strategic scripts designed to explode conversions without filming costs.",
+                        quote: "My method identifies exact funnel bottlenecks. I unlock the flow, you collect the profits.",
                         service1Title: "Pure Media Buying",
-                        service1Desc: "TikTok/IG/FB Management + Bottleneck Analysis + Metrics Optimization.",
-                        service2Title: "The Full Scale (AI + Media)",
-                        service2Desc: "Media Buying + Strategic Scripts + AI Ad Creation (UGC Models).",
-                        footerTitle: "READY TO REACH THE NEXT LEVEL?",
+                        service1Desc: "TikTok/IG/FB Management + Bottleneck Analysis.",
+                        service2Title: "Full Scale (AI + Media)",
+                        service2Desc: "Media Buying + AI Ad Creation (UGC Models).",
+                        footerTitle: "READY TO SCALE?",
                         footerBtn: "START NOW"
                     },
                     de: {
                         navBtn: "Jetzt Scalen",
                         hero1: "IHR WACHSTUM IST KEIN",
                         hero2: "ZUFALL.",
-                        heroSub: "Wir lösen die Blockaden in Ihrem Funnel durch präzises Ad-Engineering und KI-Assets der nächsten Generation.",
-                        btnServices: "UNSERE LÖSUNGEN",
-                        btnAi: "KI-UGC ENTDECKEN",
+                        heroSub: "Wir lösen Blockaden in Ihrem Funnel durch präzises Ad-Engineering und KI-Modelle.",
+                        btnServices: "LÖSUNGEN",
                         sectionWeb: "WEB-INFRASTRUKTUR",
                         pack1_1: "Webseiten-Erstellung (500€ Setup)",
                         pack1_2: "Hochleistungs-Hosting",
                         pack1_3: "1 Wöchentliches Update",
                         customPrice: "Individuell",
-                        pack2_1: "Vollständiges monatliches Redesign",
-                        pack2_2: "3 Simultane Updates / Woche",
-                        pack2_3: "Absoluter Prioritäts-Support",
+                        pack2_1: "Monatliches Redesign inklusive",
+                        pack2_2: "3 Updates / Woche",
+                        pack2_3: "VIP Prioritäts-Support",
                         sectionScale: "PERFORMANCE & SCALE",
                         aiTitle1: "KI FÜR IHREN",
                         aiTitle2: "R.O.A.S.",
-                        aiDesc: "Wir nutzen unsere eigene KI-Technologie, um Skripte und synthetische UGC-Modelle zu erstellen, die 3x besser konvertieren.",
-                        quote: "Meine exklusive Methode identifiziert die Engpässe in Ihrem Funnel. Ich öffne den Fluss, Sie machen den Gewinn.",
+                        aiDesc: "Synthetische UGC-Modelle und strategische Skripte für maximale Konversion.",
+                        quote: "Meine Methode identifiziert die Engpässe in Ihrem Funnel. Ich öffne den Fluss.",
                         service1Title: "Pure Media Buying",
-                        service1Desc: "TikTok/IG/FB Management + Engpass-Analyse + Metriken-Optimierung.",
-                        service2Title: "The Full Scale (KI + Media)",
-                        service2Desc: "Media Buying + Strategische Skripte + KI-Werbeerstellung (UGC-Modelle).",
-                        footerTitle: "BEREIT FÜR DAS NÄCHSTE LEVEL?",
-                        footerBtn: "JETZT STARTEN"
+                        service1Desc: "TikTok/IG/FB Management + Analyse.",
+                        service2Title: "Full Scale (KI + Media)",
+                        service2Desc: "Media Buying + KI-Werbeerstellung (UGC-Modelle).",
+                        footerTitle: "BEREIT ZU SCALEN?",
+                        footerBtn: "START NOW"
                     }
                 }
             }
