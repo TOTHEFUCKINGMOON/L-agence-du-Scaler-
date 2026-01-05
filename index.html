@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Scalers Agency | Performance & Scale</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #ffffff; }
+        .gradient-text { background: linear-gradient(90deg, #fff, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .card-glow:hover { box-shadow: 0 0 20px rgba(59, 130, 246, 0.2); border-color: #3b82f6; transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="flex justify-between items-center p-6 max-w-7xl mx-auto">
+        <div class="text-2xl font-black tracking-tighter">THE SCALERS<span class="text-blue-500">.</span></div>
+        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-bold transition">Get Scaled</a>
+    </nav>
+
+    <header class="py-20 px-6 text-center max-w-5xl mx-auto">
+        <h1 class="text-5xl md:text-8xl font-black mb-6 leading-tight">VOTRE CROISSANCE N'EST PAS UN <span class="gradient-text">HASARD.</span></h1>
+        <p class="text-gray-400 text-xl md:text-2xl mb-10 max-w-3xl mx-auto">Nous brisons les bottlenecks de votre funnel grâce à une ingénierie publicitaire de précision et des assets IA de nouvelle génération.</p>
+        <div class="flex flex-col md:flex-row justify-center gap-4">
+            <a href="#services" class="bg-white text-black px-8 py-4 rounded-lg font-black text-lg hover:bg-gray-200 transition">VOIR NOS SOLUTIONS</a>
+            <a href="#ai" class="border border-gray-700 px-8 py-4 rounded-lg font-black text-lg hover:bg-gray-900 transition underline decoration-blue-500">DÉCOUVRIR L'UGC-IA</a>
+        </div>
+    </header>
+
+    <section id="services" class="py-20 max-w-7xl mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-12 border-l-4 border-blue-600 pl-4">INFRASTRUCTURE WEB</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-zinc-900 p-8 rounded-2xl border border-zinc-800 card-glow">
+                <h3 class="text-xl font-bold mb-2">Pack Minimum Standards Allowed</h3>
+                <p class="text-4xl font-black mb-6">50€<span class="text-sm text-gray-500"> /mois</span></p>
+                <ul class="text-gray-400 space-y-3 mb-8">
+                    <li>✓ Création de site (Setup 500€)</li>
+                    <li>✓ Hébergement Haute Performance</li>
+                    <li>✓ 1 Update hebdomadaire</li>
+                </ul>
+            </div>
+            <div class="bg-zinc-900 p-8 rounded-2xl border border-blue-900 card-glow relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-blue-600 text-[10px] px-3 py-1 font-bold uppercase">Best Value</div>
+                <h3 class="text-xl font-bold mb-2">Pack Client Is King</h3>
+                <p class="text-4xl font-black mb-6">Sur Mesure</p>
+                <ul class="text-gray-400 space-y-3 mb-8">
+                    <li>✓ Refonte complète mensuelle (si besoin)</li>
+                    <li>✓ 3 Updates simultanées / semaine</li>
+                    <li>✓ Priorité absolue sur le support</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="ai" class="py-20 bg-zinc-950 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-right border-r-4 border-blue-600 pr-4">PERFORMANCE & SCALE</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-4xl font-black mb-6 leading-tight">L'IA AU SERVICE DE <br><span class="text-blue-500">VOTRE R.O.A.S.</span></h3>
+                    <p class="text-gray-400 mb-6">Nous ne nous contentons pas de "gérer des pubs". Nous utilisons notre propre technologie d'IA pour générer des scripts et des modèles UGC synthétiques qui convertissent 3x plus que la moyenne.</p>
+                    <div class="bg-blue-600/10 border border-blue-500/30 p-6 rounded-xl">
+                        <p class="italic text-blue-200">"Ma méthode exclusive identifie les bottlenecks précis de votre funnel. Je débloque le flux, vous encaissez les profits."</p>
+                    </div>
+                </div>
+                <div class="grid gap-6">
+                    <div class="bg-zinc-900 p-8 rounded-2xl border border-zinc-800 hover:border-blue-500 transition">
+                        <h4 class="font-bold text-xl mb-2">Media Buying Pure</h4>
+                        <p class="text-3xl font-black text-blue-500 mb-4">1 500€ /mois</p>
+                        <p class="text-sm text-gray-400 italic italic">Gestion TikTok/IG/FB + Analyse des bottlenecks + Optimisation des métriques.</p>
+                    </div>
+                    <div class="bg-zinc-900 p-8 rounded-2xl border-2 border-blue-600">
+                        <h4 class="font-bold text-xl mb-2">The Full Scale (IA + Media)</h4>
+                        <p class="text-3xl font-black text-blue-500 mb-4">3 000€ /mois</p>
+                        <p class="text-sm text-gray-400">Media Buying + Scripts Stratégiques + Création de publicités via IA (UGC Models) + Gestion des campagnes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="py-20 text-center border-t border-zinc-900">
+        <h2 class="text-3xl font-black mb-8">PRÊT À PASSER AU NIVEAU SUPÉRIEUR ?</h2>
+        <button class="bg-white text-black px-12 py-5 rounded-full font-black text-xl hover:scale-105 transition transform">DÉMARRER MAINTENANT</button>
+        <p class="mt-12 text-gray-600 text-sm">© 2024 The Scalers Agency. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
