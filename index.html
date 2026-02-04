@@ -78,28 +78,68 @@
 
         <section id="services" class="py-20 max-w-7xl mx-auto px-6">
             <h2 class="text-3xl font-bold mb-12 border-l-4 border-blue-600 pl-4 uppercase" x-text="t[lang].sectionWeb"></h2>
-            <div class="grid md:grid-cols-2 gap-8">
+            <div class="grid lg:grid-cols-2 gap-8">
                 <div class="bg-zinc-900/80 backdrop-blur-sm p-8 rounded-2xl border border-zinc-800 card-glow flex flex-col justify-between">
                     <div>
-                        <h3 class="text-xl font-bold mb-2 uppercase tracking-tighter">PACK MSA (Minimum Standard Allowed)</h3>
-                        <p class="text-4xl font-black mb-6">50€<span class="text-sm text-gray-500"> /mo</span></p>
-                        <ul class="text-gray-400 space-y-3 mb-8">
-                            <li>✓ Setup Initial Pro (500€)</li>
-                            <li>✓ Hébergement Haute Performance</li>
-                            <li>✓ 1 Update Hebdomadaire</li>
-                        </ul>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-black uppercase tracking-tighter">PACK MSA<br><span class="text-blue-500 text-sm font-bold italic">Fondation & Sérénité</span></h3>
+                            <p class="text-4xl font-black">50€<span class="text-sm text-gray-500"> /mo</span></p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <p class="text-xs font-bold text-blue-400 uppercase mb-3 underline">Ce que vous achetez vraiment :</p>
+                            <ul class="text-gray-300 text-sm space-y-2 mb-6">
+                                <li>✓ Tranquillité mentale totale</li>
+                                <li>✓ Zéro décision technique à prendre</li>
+                                <li>✓ Interlocuteur unique si quelque chose casse</li>
+                                <li>✓ Continuité business (même absent 3 mois)</li>
+                                <li>✓ Accès prioritaire en cas d'urgence</li>
+                            </ul>
+                            
+                            <p class="text-xs font-bold text-gray-500 uppercase mb-3">Comment on garantit ça :</p>
+                            <ul class="text-gray-400 text-xs grid grid-cols-1 md:grid-cols-2 gap-2 mb-8">
+                                <li>• Écosystème Meta complet</li>
+                                <li>• Instagram + TikTok Business</li>
+                                <li>• WhatsApp Business connecté</li>
+                                <li>• Hébergement Haute Perf</li>
+                                <li>• 1 Update Hebdomadaire</li>
+                                <li>• Support technique 24/7</li>
+                                <li>• Intervention J+1 ouvré</li>
+                                <li>• Sauvegardes / Rollback</li>
+                            </ul>
+                        </div>
                     </div>
                     <a href="#footer-funnel" @click="selectedService = 'msa'; showSelector = true" class="w-full bg-blue-600 text-center py-4 rounded-xl font-black hover:bg-blue-700 transition uppercase">GET NOW</a>
                 </div>
+
                 <div class="bg-zinc-900/80 backdrop-blur-sm p-8 rounded-2xl border border-blue-900 card-glow flex flex-col justify-between">
                     <div>
-                        <h3 class="text-xl font-bold mb-2 uppercase tracking-tighter">PACK CIK (Client Is King)</h3>
-                        <p class="text-4xl font-black mb-6">100€<span class="text-sm text-gray-500"> /mo</span></p>
-                        <ul class="text-gray-400 space-y-3 mb-8">
-                            <li>✓ Refonte mensuelle complète</li>
-                            <li>✓ 3 Updates simultanées / semaine</li>
-                            <li>✓ Support Prioritaire VIP</li>
-                        </ul>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-black uppercase tracking-tighter">PACK CIK<br><span class="text-blue-500 text-sm font-bold italic">Écosystème global & Accès Prioritaire</span></h3>
+                            <p class="text-4xl font-black">100€<span class="text-sm text-gray-500"> /mo</span></p>
+                        </div>
+
+                        <div class="mb-6">
+                            <p class="text-xs font-bold text-blue-400 uppercase mb-3 underline">Ce que vous achetez vraiment :</p>
+                            <ul class="text-gray-300 text-sm space-y-2 mb-6">
+                                <li>✓ Tranquillité mentale totale</li>
+                                <li>✓ Zéro décision technique à prendre</li>
+                                <li>✓ Interlocuteur unique si quelque chose casse</li>
+                                <li>✓ Continuité business garantie</li>
+                                <li>✓ Accès prioritaire quand c'est urgent</li>
+                            </ul>
+
+                            <p class="text-xs font-bold text-gray-500 uppercase mb-3">Comment on garantit ça (MSA +) :</p>
+                            <ul class="text-gray-400 text-xs grid grid-cols-1 md:grid-cols-2 gap-2 mb-8">
+                                <li>• Processeur de paiement</li>
+                                <li>• Création Business Manager</li>
+                                <li>• Setup Meta Business Suite</li>
+                                <li>• Pré-requis Ad-Ready</li>
+                                <li>• Possible refonte mensuelle</li>
+                                <li>• 3 Updates simultanées / sem</li>
+                                <li>• Support Prioritaire VIP</li>
+                            </ul>
+                        </div>
                     </div>
                     <a href="#footer-funnel" @click="selectedService = 'cik'; showSelector = true" class="w-full bg-blue-600 text-center py-4 rounded-xl font-black hover:bg-blue-700 transition uppercase">GET NOW</a>
                 </div>
@@ -169,51 +209,16 @@
                 </div>
 
                 <div x-show="selectedService !== ''" x-transition:enter class="mt-12 bg-zinc-900/90 backdrop-blur-md p-6 md:p-12 rounded-3xl border border-white/10 text-left max-w-4xl mx-auto">
-                    
                     <div class="aspect-video bg-black rounded-2xl mb-10 overflow-hidden border border-blue-500/30 flex items-center justify-center relative group">
                         <div class="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent"></div>
                         <p class="text-zinc-600 font-black uppercase tracking-[0.3em] text-xs">VSL VIDEO : <span class="text-blue-500" x-text="selectedService"></span></p>
                     </div>
-
-                    <div class="mb-10">
-                        <h3 class="text-xl font-bold mb-6 text-blue-500 uppercase tracking-tight">Ce que vous obtenez :</h3>
-                        <ul class="grid md:grid-cols-2 gap-4 text-gray-300">
-                            <template x-if="selectedService === 'msa'">
-                                <li class="flex items-start"><span class="text-blue-500 mr-2">▶</span> <span><b>Vitesse :</b> Temps de chargement < 1s pour maximiser votre Cr.</span></li>
-                            </template>
-                            <template x-if="selectedService === 'cik'">
-                                <li class="flex items-start"><span class="text-blue-500 mr-2">▶</span> <span><b>Dominance :</b> Un site qui convertit le trafic froid en clients royaux.</span></li>
-                            </template>
-                            <template x-if="selectedService === 'logic'">
-                                <li class="flex items-start"><span class="text-blue-500 mr-2">▶</span> <span><b>Précision :</b> Analyse granulaire de chaque étape de votre funnel.</span></li>
-                            </template>
-                            <template x-if="selectedService === 'deep'">
-                                <li class="flex items-start"><span class="text-blue-500 mr-2">▶</span> <span><b>Scale Illimité :</b> Plus besoin de tournages coûteux, l'IA produit à l'infini.</span></li>
-                            </template>
-                            <li class="flex items-start"><span class="text-blue-500 mr-2">▶</span> <span>Support technique haute performance.</span></li>
-                        </ul>
+                    <div class="mb-10 text-center">
+                        <p class="text-gray-400">Détails de l'offre <span class="text-blue-500 uppercase font-black" x-text="selectedService"></span> chargés.</p>
                     </div>
-
-                    <div x-show="selectedService === 'logic' || selectedService === 'deep'" class="border-t border-white/10 pt-10">
-                        <h3 class="text-xl font-bold uppercase mb-8">Candidature de sélection stratégique</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                            <input type="text" placeholder="Nom Complet" class="bg-black/50 border border-white/10 p-4 rounded-xl focus:border-blue-500 outline-none">
-                            <input type="text" placeholder="Site Web / Business" class="bg-black/50 border border-white/10 p-4 rounded-xl focus:border-blue-500 outline-none">
-                            <select class="bg-black/50 border border-white/10 p-4 rounded-xl focus:border-blue-500 outline-none text-gray-500">
-                                <option>Ad Spend Mensuel actuel</option>
-                                <option>0 - 2k€</option>
-                                <option>2k - 10k€</option>
-                                <option>10k€ +</option>
-                            </select>
-                            <input type="email" placeholder="Email Professionnel" class="bg-black/50 border border-white/10 p-4 rounded-xl focus:border-blue-500 outline-none">
-                        </div>
-                        <button class="w-full bg-blue-600 py-5 rounded-2xl font-black text-xl hover:bg-blue-700 transition uppercase shadow-[0_0_20px_rgba(59,130,246,0.3)]">Réserver mon appel stratégique</button>
-                    </div>
-
-                    <div x-show="selectedService === 'msa' || selectedService === 'cik'" class="border-t border-white/10 pt-10 text-center">
+                    <div class="border-t border-white/10 pt-10 text-center">
                         <button class="bg-white text-black px-12 py-5 rounded-2xl font-black text-xl hover:bg-blue-600 hover:text-white transition uppercase shadow-xl">Accéder au paiement sécurisé</button>
                     </div>
-
                 </div>
 
                 <p class="mt-20 text-gray-700 text-[10px] tracking-widest uppercase italic">© 2026 THE SCALER'S AGENCY. HIGH PERFORMANCE ONLY.</p>
@@ -271,7 +276,6 @@
                 }
             }
             draw() {
-                // Luminosité augmentée : alpha à 1.0 au lieu de 0.7
                 ctx.fillStyle = 'rgba(59, 130, 246, 1.0)';
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -292,7 +296,6 @@
                     let dy = particles[i].y - particles[j].y;
                     let dist = Math.sqrt(dx*dx + dy*dy);
                     if (dist < 100) {
-                        // Luminosité augmentée : multiplicateur à 0.4 au lieu de 0.12
                         let opacity = (1 - (dist / 100)) * 0.4;
                         ctx.strokeStyle = `rgba(59, 130, 246, ${opacity})`;
                         ctx.lineWidth = 0.5;
