@@ -85,7 +85,6 @@
                             <h3 class="text-xl font-black uppercase tracking-tighter">PACK MSA<br><span class="text-blue-500 text-sm font-bold italic">Fondation & Sérénité</span></h3>
                             <p class="text-4xl font-black">50€<span class="text-sm text-gray-500"> /mo</span></p>
                         </div>
-                        
                         <div class="mb-6">
                             <p class="text-xs font-bold text-blue-400 uppercase mb-3 underline">Ce que vous achetez vraiment :</p>
                             <ul class="text-gray-300 text-sm space-y-2 mb-6">
@@ -95,7 +94,6 @@
                                 <li>✓ Continuité business (même absent 3 mois)</li>
                                 <li>✓ Accès prioritaire en cas d'urgence</li>
                             </ul>
-                            
                             <p class="text-xs font-bold text-gray-500 uppercase mb-3">Comment on garantit ça :</p>
                             <ul class="text-gray-400 text-xs grid grid-cols-1 md:grid-cols-2 gap-2 mb-8">
                                 <li>• Écosystème Meta complet</li>
@@ -118,7 +116,6 @@
                             <h3 class="text-xl font-black uppercase tracking-tighter">PACK CIK<br><span class="text-blue-500 text-sm font-bold italic">Écosystème global & Accès Prioritaire</span></h3>
                             <p class="text-4xl font-black">100€<span class="text-sm text-gray-500"> /mo</span></p>
                         </div>
-
                         <div class="mb-6">
                             <p class="text-xs font-bold text-blue-400 uppercase mb-3 underline">Ce que vous achetez vraiment :</p>
                             <ul class="text-gray-300 text-sm space-y-2 mb-6">
@@ -128,7 +125,6 @@
                                 <li>✓ Continuité business garantie</li>
                                 <li>✓ Accès prioritaire quand c'est urgent</li>
                             </ul>
-
                             <p class="text-xs font-bold text-gray-500 uppercase mb-3">Comment on garantit ça (MSA +) :</p>
                             <ul class="text-gray-400 text-xs grid grid-cols-1 md:grid-cols-2 gap-2 mb-8">
                                 <li>• Processeur de paiement</li>
@@ -172,9 +168,9 @@
                             <p class="text-sm text-gray-400 italic">Media Buying + Bottleneck Identification + Metric Science.</p>
                         </div>
                         <div @click="selectedService = 'deep'; showSelector = true; window.location.hash = 'footer-funnel'" class="cursor-pointer bg-zinc-900/90 p-8 rounded-2xl border-2 border-blue-600 card-glow">
-                            <h4 class="font-bold text-xl mb-2 uppercase tracking-tighter">Deepfake AI Dominance</h4>
+                            <h4 class="font-bold text-xl mb-2 uppercase tracking-tighter">"DEEPFAKE-QUALITY" AI Dominance</h4>
                             <p class="text-3xl font-black text-blue-500 mb-4">3 000€ /mo</p>
-                            <p class="text-sm text-gray-400">Math-Logic + AI Clone "Deepfake" for Unlimited UGC Models.</p>
+                            <p class="text-sm text-gray-400">Math-Logic + AI Clone "DEEPFAKE-QUALITY" for Unlimited UGC Models.</p>
                         </div>
                     </div>
                 </div>
@@ -184,11 +180,7 @@
         <footer id="footer-funnel" class="py-32 bg-black/40 border-t border-zinc-900 text-center">
             <div class="max-w-5xl mx-auto px-6">
                 <h2 class="text-4xl font-black mb-12 uppercase" x-text="t[lang].footerTitle"></h2>
-                
-                <button @click="showSelector = !showSelector" class="bg-white text-black px-12 py-5 rounded-full font-black text-2xl hover:bg-blue-500 hover:text-white transition transform uppercase">
-                    START NOW
-                </button>
-
+                <button @click="showSelector = !showSelector" class="bg-white text-black px-12 py-5 rounded-full font-black text-2xl hover:bg-blue-500 hover:text-white transition transform uppercase">START NOW</button>
                 <div x-show="showSelector" x-transition.opacity class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     <button @click="selectedService = 'msa'" :class="selectedService === 'msa' ? 'border-blue-500 bg-blue-500/10' : 'border-white/10'" class="p-4 border rounded-xl hover:border-blue-500 transition">
                         <span class="block font-black text-xs">PACK MSA</span>
@@ -203,24 +195,19 @@
                         <span class="text-[10px] text-gray-500 uppercase">1500€/mo</span>
                     </button>
                     <button @click="selectedService = 'deep'" :class="selectedService === 'deep' ? 'border-blue-500 bg-blue-500/10' : 'border-white/10'" class="p-4 border rounded-xl hover:border-blue-500 transition">
-                        <span class="block font-black text-xs text-blue-500 uppercase tracking-tighter">Deepfake AI</span>
+                        <span class="block font-black text-xs text-blue-500 uppercase tracking-tighter">"DEEPFAKE-QUALITY"</span>
                         <span class="text-[10px] text-gray-500 uppercase">3000€/mo</span>
                     </button>
                 </div>
-
                 <div x-show="selectedService !== ''" x-transition:enter class="mt-12 bg-zinc-900/90 backdrop-blur-md p-6 md:p-12 rounded-3xl border border-white/10 text-left max-w-4xl mx-auto">
                     <div class="aspect-video bg-black rounded-2xl mb-10 overflow-hidden border border-blue-500/30 flex items-center justify-center relative group">
                         <div class="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent"></div>
                         <p class="text-zinc-600 font-black uppercase tracking-[0.3em] text-xs">VSL VIDEO : <span class="text-blue-500" x-text="selectedService"></span></p>
                     </div>
-                    <div class="mb-10 text-center">
-                        <p class="text-gray-400">Détails de l'offre <span class="text-blue-500 uppercase font-black" x-text="selectedService"></span> chargés.</p>
-                    </div>
                     <div class="border-t border-white/10 pt-10 text-center">
                         <button class="bg-white text-black px-12 py-5 rounded-2xl font-black text-xl hover:bg-blue-600 hover:text-white transition uppercase shadow-xl">Accéder au paiement sécurisé</button>
                     </div>
                 </div>
-
                 <p class="mt-20 text-gray-700 text-[10px] tracking-widest uppercase italic">© 2026 THE SCALER'S AGENCY. HIGH PERFORMANCE ONLY.</p>
             </div>
         </footer>
@@ -333,9 +320,9 @@
                         btnAi: "DÉCOUVRIR L'UGC-IA",
                         sectionWeb: "INFRASTRUCTURE WEB",
                         sectionScale: "PERFORMANCE & SCALE",
-                        aiTitle1: "DEEPFAKE IA & MATHS DE PRÉCISION",
+                        aiTitle1: "\"DEEPFAKE-QUALITY\" IA & MATHS DE PRÉCISION",
                         aiTitle2: "VOTRE R.O.A.S.",
-                        aiDesc: "Des modèles UGC synthétiques IA de qualité 'Deepfake' et des scripts stratégiques conçus pour exploser les conversions sans coûts de tournage.",
+                        aiDesc: "Des modèles UGC synthétiques IA de qualité \"DEEPFAKE-QUALITY\" et des scripts stratégiques conçus pour exploser les conversions sans coûts de tournage.",
                         quote: "Ma méthode utilise de réelles équations mathématiques pour identifier les bottlenecks précis et arrêter les tests 'hypothétiques'. J'ouvre le flux, vous encaissez.",
                         mathJoke: "Je tiens à vous prévenir que ceci n'est pas la formule exacte, mais elle s'en rapproche.",
                         footerTitle: "PRÊT À PASSER AU NIVEAU SUPÉRIEUR ?",
@@ -344,14 +331,14 @@
                         navBtn: "Get Scaled",
                         hero1: "YOUR GROWTH IS NOT BY",
                         hero2: "ACCIDENT.",
-                        heroSub: "We engineering scaling through real mathematical formulas and deepfake-quality AI ads.",
+                        heroSub: "We engineering scaling through real mathematical formulas and \"DEEPFAKE-QUALITY\" AI ads.",
                         btnServices: "OUR SOLUTIONS",
                         btnAi: "DISCOVER AI-UGC",
                         sectionWeb: "WEB INFRASTRUCTURE",
                         sectionScale: "PERFORMANCE & SCALE",
-                        aiTitle1: "DEEPFAKE AI & MATH PRECISION",
+                        aiTitle1: "\"DEEPFAKE-QUALITY\" AI & MATH PRECISION",
                         aiTitle2: "YOUR R.O.A.S.",
-                        aiDesc: "'Deepfake' quality synthetic AI UGC models and strategic scripts designed to explode conversions without filming costs.",
+                        aiDesc: "\"DEEPFAKE-QUALITY\" synthetic AI UGC models and strategic scripts designed to explode conversions without filming costs.",
                         quote: "My method use real mathematic equations to identifies exact funnel bottlenecks and stop testing 'hypothetically'. I unlock the flow, you collect the profits.",
                         mathJoke: "I must warn you: this is not the actual formula we use, but it looks like it.",
                         footerTitle: "READY TO REACH THE NEXT LEVEL?",
@@ -360,14 +347,14 @@
                         navBtn: "Jetzt Scalen",
                         hero1: "IHR WACHSTUM IST KEIN",
                         hero2: "ZUFALL.",
-                        heroSub: "Wir entwickeln Wachstum durch mathematische Formeln und KI-Anzeigen in Deepfake-Qualität.",
+                        heroSub: "Wir entwickeln Wachstum durch mathematische Formeln und KI-Anzeigen in \"DEEPFAKE-QUALITY\".",
                         btnServices: "UNSERE LÖSUNGEN",
                         btnAi: "KI-UGC ENTDECKEN",
                         sectionWeb: "WEB-INFRASTRUKTUR",
                         sectionScale: "PERFORMANCE & SCALE",
-                        aiTitle1: "DEEPFAKE KI & MATHE-PRÄZISION",
+                        aiTitle1: "\"DEEPFAKE-QUALITY\" KI & MATHE-PRÄZISION",
                         aiTitle2: "IHR R.O.A.S.",
-                        aiDesc: "KI-generierte UGC-Modelle in 'Deepfake'-Qualität pour maximale Konversion.",
+                        aiDesc: "KI-generierte UGC-Modelle in \"DEEPFAKE-QUALITY\" pour maximale Konversion.",
                         quote: "Meine Methode nutzt echte mathematische Gleichungen, um Engpässe zu identifizieren.",
                         mathJoke: "Ich muss Sie warnen: Dies ist nicht die tatsächliche Formel, aber sie sieht so aus.",
                         footerTitle: "BEREIT ZU SCALEN?",
