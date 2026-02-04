@@ -271,7 +271,8 @@
                 }
             }
             draw() {
-                ctx.fillStyle = 'rgba(59, 130, 246, 0.7)';
+                // Luminosité augmentée : alpha à 1.0 au lieu de 0.7
+                ctx.fillStyle = 'rgba(59, 130, 246, 1.0)';
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -291,7 +292,8 @@
                     let dy = particles[i].y - particles[j].y;
                     let dist = Math.sqrt(dx*dx + dy*dy);
                     if (dist < 100) {
-                        let opacity = (1 - (dist / 100)) * 0.12;
+                        // Luminosité augmentée : multiplicateur à 0.4 au lieu de 0.12
+                        let opacity = (1 - (dist / 100)) * 0.4;
                         ctx.strokeStyle = `rgba(59, 130, 246, ${opacity})`;
                         ctx.lineWidth = 0.5;
                         ctx.beginPath();
