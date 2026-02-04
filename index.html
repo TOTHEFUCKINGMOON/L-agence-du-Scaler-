@@ -1,93 +1,411 @@
-<section id="services" class="py-20 max-w-5xl mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-12 border-l-4 border-blue-600 pl-4 uppercase" x-text="t[lang].sectionWeb"></h2>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Scaler's Agency | Precision Growth</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        [x-cloak] { display: none !important; }
+        html { scroll-behavior: smooth; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #000000; 
+            color: #ffffff; 
+            overflow-x: hidden;
+        }
+
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .relative-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .gradient-text { 
+            background: linear-gradient(90deg, #fff, #3b82f6); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+
+        .card-glow:hover { 
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.15); 
+            border-color: #3b82f6; 
+            transition: all 0.4s ease; 
+        }
+        
+        .glass-section {
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #000; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 10px; }
+    </style>
+</head>
+<body class="antialiased custom-scrollbar" x-data="languageManager()" x-cloak>
+
+    <canvas id="particle-canvas"></canvas>
+
+    <div class="relative-content" x-data="{ showSelector: false, selectedService: '' }">
+        
+        <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-md border-b border-white/10">
+            <div class="flex justify-between items-center p-6 max-w-7xl mx-auto">
+                <div class="text-2xl font-black tracking-tighter uppercase">
+                    THE SCALER<span class="text-blue-500">'</span>S <span class="hidden md:inline text-blue-500">AGENCY</span>
+                </div>
+                
+                <div class="flex items-center space-x-6">
+                    <div class="flex space-x-2 bg-white/5 p-1 rounded-full border border-white/10">
+                        <button @click="setLang('en')" class="w-8 h-8 rounded-full overflow-hidden border-2" :class="lang === 'en' ? 'border-blue-500' : 'border-transparent opacity-50'"><img src="https://flagcdn.com/w40/gb.png" class="w-full h-full object-cover"></button>
+                        <button @click="setLang('fr')" class="w-8 h-8 rounded-full overflow-hidden border-2" :class="lang === 'fr' ? 'border-blue-500' : 'border-transparent opacity-50'"><img src="https://flagcdn.com/w40/fr.png" class="w-full h-full object-cover"></button>
+                    </div>
+                    <a href="#footer-funnel" @click="showSelector = true" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-bold transition text-sm uppercase tracking-widest">Scale Now</a>
+                </div>
+            </div>
+        </nav>
+
+        <header class="pt-48 pb-20 px-6 text-center max-w-5xl mx-auto">
+            <h1 class="text-5xl md:text-8xl font-black mb-6 leading-tight uppercase">
+                <span x-text="t[lang].hero1"></span> <br><span class="gradient-text" x-text="t[lang].hero2"></span>
+            </h1>
+            <p class="text-gray-400 text-xl md:text-2xl mb-10 max-w-3xl mx-auto font-light" x-text="t[lang].heroSub"></p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="#services" class="bg-white text-black px-8 py-4 rounded-lg font-black text-lg hover:bg-gray-200 transition uppercase tracking-tighter">Nos Packages</a>
+                <a href="#ai" class="border border-gray-700 px-8 py-4 rounded-lg font-black text-lg hover:bg-gray-900 transition underline decoration-blue-500 uppercase tracking-tighter">Solutions IA</a>
+            </div>
+        </header>
+
+        <section id="services" class="py-20 max-w-5xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-16 border-l-4 border-blue-600 pl-4 uppercase tracking-tighter" x-text="t[lang].sectionWeb"></h2>
+            
             <div class="grid md:grid-cols-2 gap-12">
                 
-                <div class="bg-zinc-900/80 backdrop-blur-sm p-10 rounded-3xl border border-zinc-800 card-glow flex flex-col">
-                    <div class="mb-8">
-                        <h3 class="text-2xl font-black uppercase tracking-tighter">Pack MSA – "Minimum Standard Allowed"</h3>
-                        <p class="text-blue-500 font-bold italic text-sm">Amenant Fondation & Sérénité</p>
+                <div class="bg-zinc-900/60 backdrop-blur-md p-10 rounded-3xl border border-zinc-800 card-glow flex flex-col h-full">
+                    <div class="mb-10">
+                        <h3 class="text-2xl font-black uppercase tracking-tighter leading-tight">Pack MSA – <br>"Minimum Standard Allowed"</h3>
+                        <p class="text-blue-500 font-bold italic text-sm mt-2">Amenant Fondation & Sérénité</p>
                     </div>
 
-                    <div class="space-y-8 flex-grow">
+                    <div class="space-y-10 flex-grow">
                         <div>
-                            <p class="text-xs font-black text-white uppercase tracking-widest mb-4 opacity-50">Ce que vous achetez vraiment :</p>
-                            <ul class="space-y-3 text-gray-200">
-                                <li class="flex items-start"><span class="text-blue-500 mr-2">✓</span> Tranquillité mentale totale</li>
-                                <li class="flex items-start"><span class="text-blue-500 mr-2">✓</span> Zéro décision technique à prendre</li>
-                                <li class="flex items-start"><span class="text-blue-500 mr-2">✓</span> Un interlocuteur unique si quelque chose casse</li>
-                                <li class="flex items-start"><span class="text-blue-500 mr-2">✓</span> Continuité : votre business reste opérationnel même si vous disparaissez 3 mois</li>
-                                <li class="flex items-start"><span class="text-blue-500 mr-2">✓</span> Accès prioritaire quand c’est urgent</li>
+                            <p class="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] mb-5">Ce que vous achetez vraiment :</p>
+                            <ul class="space-y-4 text-gray-200 text-sm">
+                                <li class="flex items-start"><span class="text-blue-500 mr-3 font-bold">✓</span> Tranquillité mentale totale</li>
+                                <li class="flex items-start"><span class="text-blue-500 mr-3 font-bold">✓</span> Zéro décision technique à prendre</li>
+                                <li class="flex items-start"><span class="text-blue-500 mr-3 font-bold">✓</span> Un interlocuteur unique si quelque chose casse</li>
+                                <li class="flex items-start"><span class="text-blue-500 mr-3 font-bold">✓</span> Continuité : votre business reste opérationnel même si vous disparaissez 3 mois</li>
+                                <li class="flex items-start"><span class="text-blue-500 mr-3 font-bold">✓</span> Accès prioritaire quand c’est urgent</li>
                             </ul>
                         </div>
 
-                        <hr class="border-white/5">
+                        <div class="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
 
                         <div>
-                            <p class="text-xs font-black text-white uppercase tracking-widest mb-4 opacity-50">Comment on garantit ça :</p>
-                            <ul class="space-y-2 text-sm text-gray-400">
-                                <li>• Mise en place écosystème Meta complet</li>
-                                <li>• Instagram + TikTok Business</li>
-                                <li>• WhatsApp Business connecté</li>
-                                <li>• Hébergement Haute Performance</li>
-                                <li>• 1 Update Hebdomadaire</li>
-                                <li>• Support technique 24/7 – réception des incidents</li>
-                                <li>• Intervention sous délais définis (J+1 ouvré hors urgence critique)</li>
-                                <li>• Sauvegardes / rollback si problème</li>
+                            <p class="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] mb-5">Comment on garantit ça :</p>
+                            <ul class="space-y-3 text-xs text-gray-400">
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500/50 rounded-full mr-3"></span> Mise en place écosystème Meta complet</li>
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500/50 rounded-full mr-3"></span> Instagram + TikTok Business</li>
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500/50 rounded-full mr-3"></span> WhatsApp Business connecté</li>
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500/50 rounded-full mr-3"></span> Hébergement Haute Performance</li>
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500/50 rounded-full mr-3"></span> 1 Update Hebdomadaire</li>
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500/50 rounded-full mr-3"></span> Support technique 24/7 – réception des incidents</li>
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500/50 rounded-full mr-3"></span> Intervention (J+1 ouvré hors urgence critique)</li>
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500/50 rounded-full mr-3"></span> Sauvegardes / rollback si problème</li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="mt-10 pt-6 border-t border-white/5">
-                        <div class="flex justify-between items-center mb-6">
-                            <span class="text-3xl font-black">50€<span class="text-sm text-gray-500 font-normal">/mois</span></span>
-                        </div>
-                        <a href="#footer-funnel" @click="selectedService = 'msa'; showSelector = true" class="block w-full bg-blue-600 text-center py-4 rounded-xl font-black hover:bg-blue-700 transition uppercase tracking-widest text-sm">Prendre ce pack</a>
+                    <div class="mt-12 pt-8 border-t border-white/5 text-center">
+                        <p class="text-3xl font-black mb-6">50€<span class="text-sm text-gray-500 font-normal"> /mois</span></p>
+                        <button @click="selectedService = 'msa'; showSelector = true; window.location.hash = 'footer-funnel'" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-black transition uppercase tracking-widest text-xs">Prendre ce pack</button>
                     </div>
                 </div>
 
-                <div class="bg-zinc-900/80 backdrop-blur-sm p-10 rounded-3xl border border-blue-600/50 card-glow flex flex-col relative overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-blue-600 text-[10px] font-black px-4 py-1 uppercase tracking-tighter">Most Popular</div>
+                <div class="bg-zinc-900/60 backdrop-blur-md p-10 rounded-3xl border border-blue-600/40 card-glow flex flex-col h-full relative overflow-hidden">
+                    <div class="absolute top-5 right-[-35px] bg-blue-600 text-[10px] font-black px-10 py-1 rotate-45 uppercase">Premium</div>
                     
-                    <div class="mb-8">
-                        <h3 class="text-2xl font-black uppercase tracking-tighter">Pack CIK – "Client Is King"</h3>
-                        <p class="text-blue-500 font-bold italic text-sm">Amenant Écosystème global & Accès Prioritaire</p>
+                    <div class="mb-10">
+                        <h3 class="text-2xl font-black uppercase tracking-tighter leading-tight">Pack CIK – <br>"Client Is King"</h3>
+                        <p class="text-blue-500 font-bold italic text-sm mt-2">Amenant Écosystème global & Accès Prioritaire</p>
                     </div>
 
-                    <div class="space-y-8 flex-grow">
+                    <div class="space-y-10 flex-grow">
                         <div>
-                            <p class="text-xs font-black text-white uppercase tracking-widest mb-4 opacity-50">Ce que vous achetez vraiment :</p>
-                            <ul class="space-y-3 text-gray-200">
-                                <li class="flex items-start"><span class="text-blue-500 mr-2">✓</span> Tranquillité mentale totale</li>
-                                <li class="flex items-start"><span class="text-blue-500 mr-2">✓</span> Zéro décision technique à prendre</li>
-                                <li class="flex items-start"><span class="text-blue-500 mr-2">✓</span> Un interlocuteur unique si quelque chose casse</li>
-                                <li class="flex items-start"><span class="text-blue-500 mr-2">✓</span> Continuité : votre business reste opérationnel même si vous disparaissez 3 mois</li>
-                                <li class="flex items-start"><span class="text-blue-500 mr-2">✓</span> Accès prioritaire quand c’est urgent</li>
+                            <p class="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] mb-5">Ce que vous achetez vraiment :</p>
+                            <ul class="space-y-4 text-gray-200 text-sm">
+                                <li class="flex items-start"><span class="text-blue-500 mr-3 font-bold">✓</span> Tranquillité mentale totale</li>
+                                <li class="flex items-start"><span class="text-blue-500 mr-3 font-bold">✓</span> Zéro décision technique à prendre</li>
+                                <li class="flex items-start"><span class="text-blue-500 mr-3 font-bold">✓</span> Un interlocuteur unique si quelque chose casse</li>
+                                <li class="flex items-start"><span class="text-blue-500 mr-3 font-bold">✓</span> Continuité : votre business reste opérationnel même si vous disparaissez 3 mois</li>
+                                <li class="flex items-start"><span class="text-blue-500 mr-3 font-bold">✓</span> Accès prioritaire quand c’est urgent</li>
                             </ul>
                         </div>
 
-                        <hr class="border-white/5">
+                        <div class="h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent"></div>
 
                         <div>
-                            <p class="text-xs font-black text-blue-400 uppercase tracking-widest mb-4">Inclut tout le pack MSA + :</p>
-                            <ul class="space-y-2 text-sm text-gray-400">
-                                <li>• Processeur de paiement</li>
-                                <li>• Création du Business Manager</li>
-                                <li>• Mise en place du Meta Business Suite</li>
-                                <li>• Pré-requis prêts pour publicité (sans la gérer)</li>
-                                <li>• Possible refonte mensuelle complète</li>
-                                <li>• 3 Updates simultanées / semaine</li>
-                                <li>• Support Prioritaire VIP</li>
+                            <p class="text-[10px] font-black text-blue-400 uppercase tracking-[0.2em] mb-5">Inclut tout le pack MSA + :</p>
+                            <ul class="space-y-3 text-xs text-gray-400">
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3"></span> Processeur de paiement</li>
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3"></span> Création du Business Manager</li>
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3"></span> Mise en place du Meta Business Suite</li>
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3"></span> Pré-requis prêts pour publicité (sans la gérer)</li>
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3"></span> Possible refonte mensuelle complète</li>
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3"></span> 3 Updates simultanées / semaine</li>
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3"></span> Support Prioritaire VIP</li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="mt-10 pt-6 border-t border-white/5">
-                        <div class="flex justify-between items-center mb-6">
-                            <span class="text-3xl font-black">100€<span class="text-sm text-gray-500 font-normal">/mois</span></span>
-                        </div>
-                        <a href="#footer-funnel" @click="selectedService = 'cik'; showSelector = true" class="block w-full bg-blue-600 text-center py-4 rounded-xl font-black hover:bg-blue-700 transition uppercase tracking-widest text-sm">Prendre ce pack</a>
+                    <div class="mt-12 pt-8 border-t border-white/5 text-center">
+                        <p class="text-3xl font-black mb-6">100€<span class="text-sm text-gray-500 font-normal"> /mois</span></p>
+                        <button @click="selectedService = 'cik'; showSelector = true; window.location.hash = 'footer-funnel'" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-black transition uppercase tracking-widest text-xs">Prendre ce pack</button>
                     </div>
                 </div>
 
             </div>
         </section>
+
+        <section id="ai" class="py-32 glass-section px-6">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl font-bold mb-16 text-right border-r-4 border-blue-600 pr-4 uppercase tracking-tighter" x-text="t[lang].sectionScale"></h2>
+                
+                <div class="grid lg:grid-cols-2 gap-20 items-center">
+                    <div>
+                        <h3 class="text-4xl md:text-5xl font-black mb-8 leading-tight uppercase">
+                            <span x-text="t[lang].aiTitle1"></span> <br><span class="text-blue-500" x-text="t[lang].aiTitle2"></span>
+                        </h3>
+                        <div class="bg-blue-600/5 border border-white/5 p-8 rounded-3xl">
+                            <p class="text-gray-300 mb-8 leading-relaxed text-lg" x-text="t[lang].aiDesc"></p>
+                            <p class="italic text-blue-400 border-l-2 border-blue-600 pl-4 py-2 mb-8" x-text="t[lang].quote"></p>
+                            
+                            <div class="pt-8 border-t border-white/10 text-center">
+                                <div class="text-2xl md:text-4xl font-mono text-white mb-2 tracking-tighter opacity-80">
+                                    ∑(V × Cr) / (CPA + m) = ROI∞
+                                </div>
+                                <p class="text-[9px] text-gray-600 uppercase tracking-[0.3em]" x-text="t[lang].mathJoke"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div @click="selectedService = 'logic'; showSelector = true; window.location.hash = 'footer-funnel'" class="group cursor-pointer bg-zinc-900/40 p-10 rounded-3xl border border-white/5 card-glow transition-all">
+                            <h4 class="font-black text-xl mb-2 uppercase tracking-tighter group-hover:text-blue-500 transition">Math-Logic Performance</h4>
+                            <p class="text-4xl font-black text-white mb-4">1 500€<span class="text-xs text-gray-500 font-normal"> /mois</span></p>
+                            <p class="text-sm text-gray-400 italic font-light">Media Buying + Bottleneck Identification + Metric Science. Une approche purement mathématique du scale.</p>
+                        </div>
+
+                        <div @click="selectedService = 'deep'; showSelector = true; window.location.hash = 'footer-funnel'" class="group cursor-pointer bg-zinc-900/80 p-10 rounded-3xl border-2 border-blue-600 card-glow transition-all">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-black text-xl uppercase tracking-tighter group-hover:text-blue-400 transition">"DEEPFAKE-QUALITY" AI Dominance</h4>
+                                <span class="bg-blue-600 text-[10px] px-3 py-1 rounded-full font-bold uppercase">God Mode</span>
+                            </div>
+                            <p class="text-4xl font-black text-white mb-4">3 000€<span class="text-xs text-gray-500 font-normal"> /mois</span></p>
+                            <p class="text-sm text-gray-300 font-light italic">Le pack Math-Logic + Création de clones IA "DEEPFAKE-QUALITY" pour des UGC illimités sans jamais allumer une caméra.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer id="footer-funnel" class="py-32 bg-black text-center border-t border-white/5">
+            <div class="max-w-4xl mx-auto px-6">
+                <h2 class="text-4xl font-black mb-16 uppercase tracking-tighter" x-text="t[lang].footerTitle"></h2>
+                
+                <button @click="showSelector = !showSelector" class="bg-white text-black px-12 py-5 rounded-full font-black text-xl hover:bg-blue-600 hover:text-white transition transform active:scale-95 uppercase tracking-widest">
+                    Lancer la machine
+                </button>
+
+                <div x-show="showSelector" x-transition.opacity class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <button @click="selectedService = 'msa'" :class="selectedService === 'msa' ? 'border-blue-500 bg-blue-500/10' : 'border-white/10 bg-white/5'" class="p-6 border rounded-2xl transition group">
+                        <span class="block font-black text-xs group-hover:text-blue-500">PACK MSA</span>
+                        <span class="text-[10px] text-gray-500 uppercase">50€/mo</span>
+                    </button>
+                    <button @click="selectedService = 'cik'" :class="selectedService === 'cik' ? 'border-blue-500 bg-blue-500/10' : 'border-white/10 bg-white/5'" class="p-6 border rounded-2xl transition group">
+                        <span class="block font-black text-xs group-hover:text-blue-500">PACK CIK</span>
+                        <span class="text-[10px] text-gray-500 uppercase">100€/mo</span>
+                    </button>
+                    <button @click="selectedService = 'logic'" :class="selectedService === 'logic' ? 'border-blue-500 bg-blue-500/10' : 'border-white/10 bg-white/5'" class="p-6 border rounded-2xl transition group">
+                        <span class="block font-black text-xs group-hover:text-blue-500 uppercase">Math-Logic</span>
+                        <span class="text-[10px] text-gray-500 uppercase">1500€/mo</span>
+                    </button>
+                    <button @click="selectedService = 'deep'" :class="selectedService === 'deep' ? 'border-blue-500 bg-blue-500/10' : 'border-white/10 bg-white/5'" class="p-6 border rounded-2xl transition group">
+                        <span class="block font-black text-xs group-hover:text-blue-500 uppercase">"DEEPFAKE-QUALITY"</span>
+                        <span class="text-[10px] text-gray-500 uppercase">3000€/mo</span>
+                    </button>
+                </div>
+
+                <div x-show="selectedService !== ''" x-transition:enter class="mt-16 bg-zinc-900/90 backdrop-blur-xl p-8 md:p-16 rounded-[3rem] border border-white/10 text-left">
+                    <div class="aspect-video bg-black rounded-3xl mb-12 overflow-hidden border border-blue-500/20 flex items-center justify-center relative group">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-900/20 to-transparent"></div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 cursor-pointer hover:scale-110 transition">
+                                <svg class="w-6 h-6 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                            <p class="text-zinc-600 font-black uppercase tracking-[0.4em] text-[10px]">VSL : <span class="text-blue-500" x-text="selectedService"></span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="bg-blue-600 text-white px-16 py-6 rounded-2xl font-black text-xl hover:bg-white hover:text-black transition uppercase shadow-2xl">
+                            Accéder au checkout
+                        </button>
+                        <p class="mt-6 text-gray-600 text-[10px] uppercase tracking-widest italic">Paiement sécurisé via Stripe & Cryptage SSL 256-bit</p>
+                    </div>
+                </div>
+
+                <div class="mt-32 pb-10 flex flex-col items-center">
+                    <div class="text-xl font-black tracking-tighter uppercase mb-4 opacity-30">THE SCALER'S AGENCY</div>
+                    <p class="text-gray-800 text-[9px] tracking-[0.5em] uppercase font-bold italic">© 2026 PRECISION ENGINEERING — HIGH PERFORMANCE ONLY</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const mouse = { x: null, y: null, radius: 250 };
+
+        function resize() {
+            const scale = window.devicePixelRatio || 1;
+            canvas.width = window.innerWidth * scale;
+            canvas.height = window.innerHeight * scale;
+            ctx.scale(scale, scale);
+            initParticles();
+        }
+
+        window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * window.innerWidth;
+                this.y = Math.random() * window.innerHeight;
+                this.size = Math.random() * 1.5 + 0.2;
+                this.vx = (Math.random() - 0.5) * 0.3;
+                this.vy = (Math.random() - 0.5) * 0.3;
+                this.angle = Math.random() * Math.PI * 2;
+            }
+            update() {
+                let dxC = (window.innerWidth / 2) - this.x;
+                let dyC = (window.innerHeight / 2) - this.y;
+                let distC = Math.sqrt(dxC*dxC + dyC*dyC);
+                
+                if (distC < 500) {
+                    this.angle += 0.0008;
+                    this.x += Math.cos(this.angle) * 0.12;
+                    this.y += Math.sin(this.angle) * 0.12;
+                }
+
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > window.innerWidth) this.vx *= -1;
+                if (this.y < 0 || this.y > window.innerHeight) this.vy *= -1;
+
+                if (mouse.x) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let dist = Math.sqrt(dx*dx + dy*dy);
+                    if (dist < mouse.radius) {
+                        let force = (mouse.radius - dist) / mouse.radius;
+                        this.x -= dx * force * 0.03;
+                        this.y -= dy * force * 0.03;
+                    }
+                }
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(59, 130, 246, 1.0)'; // Couleur néon fixe demandée
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const count = (window.innerWidth * window.innerHeight) / 9000;
+            for (let i = 0; i < count; i++) particles.push(new Particle());
+        }
+
+        function drawLines() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i; j < particles.length; j++) {
+                    let dx = particles[i].x - particles[j].x;
+                    let dy = particles[i].y - particles[j].y;
+                    let dist = Math.sqrt(dx*dx + dy*dy);
+                    if (dist < 110) {
+                        let opacity = (1 - (dist / 110)) * 0.3;
+                        ctx.strokeStyle = `rgba(59, 130, 246, ${opacity})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+            particles.forEach(p => { p.update(); p.draw(); });
+            drawLines();
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+        animate();
+
+        function languageManager() {
+            return {
+                lang: localStorage.getItem('scalerLang') || 'fr',
+                setLang(l) { this.lang = l; localStorage.setItem('scalerLang', l); },
+                t: {
+                    fr: {
+                        hero1: "VOTRE CROISSANCE N'EST PAS UN",
+                        hero2: "HASARD.",
+                        heroSub: "Nous brisons les bottlenecks de votre funnel grâce à une ingénierie publicitaire de précision et des assets IA de nouvelle génération.",
+                        sectionWeb: "INFRASTRUCTURE WEB",
+                        sectionScale: "PERFORMANCE & SCALE",
+                        aiTitle1: "\"DEEPFAKE-QUALITY\" IA & MATHS DE PRÉCISION",
+                        aiTitle2: "VOTRE R.O.A.S.",
+                        aiDesc: "Des modèles UGC synthétiques IA de qualité \"DEEPFAKE-QUALITY\" et des scripts stratégiques conçus pour exploser les conversions sans coûts de tournage.",
+                        quote: "Ma méthode utilise de réelles équations mathématiques pour identifier les bottlenecks précis et arrêter les tests 'hypothétiques'. J'ouvre le flux, vous encaissez.",
+                        mathJoke: "Je tiens à vous prévenir que ceci n'est pas la formule exacte, mais elle s'en rapproche.",
+                        footerTitle: "PRÊT À PASSER AU NIVEAU SUPÉRIEUR ?",
+                    },
+                    en: {
+                        hero1: "YOUR GROWTH IS NOT BY",
+                        hero2: "ACCIDENT.",
+                        heroSub: "We engineering scaling through real mathematical formulas and \"DEEPFAKE-QUALITY\" AI ads.",
+                        sectionWeb: "WEB INFRASTRUCTURE",
+                        sectionScale: "PERFORMANCE & SCALE",
+                        aiTitle1: "\"DEEPFAKE-QUALITY\" AI & MATH PRECISION",
+                        aiTitle2: "YOUR R.O.A.S.",
+                        aiDesc: "\"DEEPFAKE-QUALITY\" synthetic AI UGC models and strategic scripts designed to explode conversions without filming costs.",
+                        quote: "My method use real mathematic equations to identifies exact funnel bottlenecks and stop testing 'hypothetically'. I unlock the flow, you collect the profits.",
+                        mathJoke: "I must warn you: this is not the actual formula we use, but it looks like it.",
+                        footerTitle: "READY TO REACH THE NEXT LEVEL?",
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
