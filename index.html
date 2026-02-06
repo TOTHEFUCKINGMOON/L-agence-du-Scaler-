@@ -71,8 +71,9 @@
                     <div class="flex space-x-2 bg-white/5 p-1 rounded-full border border-white/10">
                         <button @click="setLang('en')" class="w-8 h-8 rounded-full overflow-hidden border-2" :class="lang === 'en' ? 'border-blue-500' : 'border-transparent opacity-50'"><img src="https://flagcdn.com/w40/gb.png" class="w-full h-full object-cover"></button>
                         <button @click="setLang('fr')" class="w-8 h-8 rounded-full overflow-hidden border-2" :class="lang === 'fr' ? 'border-blue-500' : 'border-transparent opacity-50'"><img src="https://flagcdn.com/w40/fr.png" class="w-full h-full object-cover"></button>
+                        <button @click="setLang('es')" class="w-8 h-8 rounded-full overflow-hidden border-2" :class="lang === 'es' ? 'border-blue-500' : 'border-transparent opacity-50'"><img src="https://flagcdn.com/w40/es.png" class="w-full h-full object-cover"></button>
                     </div>
-                    <a href="#footer-funnel" @click="showSelector = true" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-bold transition text-sm uppercase tracking-widest">Scale Now</a>
+                    <a href="https://calendly.com/lucabesson333/30min" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-bold transition text-sm uppercase tracking-widest" x-text="t[lang].btnScale"></a>
                 </div>
             </div>
         </nav>
@@ -83,8 +84,8 @@
             </h1>
             <p class="text-gray-400 text-xl md:text-2xl mb-10 max-w-3xl mx-auto font-light" x-text="t[lang].heroSub"></p>
             <div class="flex flex-col md:flex-row justify-center gap-4">
-                <a href="#services" class="bg-white text-black px-8 py-4 rounded-lg font-black text-lg hover:bg-gray-200 transition uppercase tracking-tighter">Nos Packages</a>
-                <a href="#ai" class="border border-gray-700 px-8 py-4 rounded-lg font-black text-lg hover:bg-gray-900 transition underline decoration-blue-500 uppercase tracking-tighter">Solutions IA</a>
+                <a href="#services" class="bg-white text-black px-8 py-4 rounded-lg font-black text-lg hover:bg-gray-200 transition uppercase tracking-tighter" x-text="t[lang].btnPackages"></a>
+                <a href="#ai" class="border border-gray-700 px-8 py-4 rounded-lg font-black text-lg hover:bg-gray-900 transition underline decoration-blue-500 uppercase tracking-tighter" x-text="t[lang].btnAi"></a>
             </div>
         </header>
 
@@ -96,41 +97,34 @@
                 <div class="bg-zinc-900/60 backdrop-blur-md p-10 rounded-3xl border border-zinc-800 card-glow flex flex-col h-full">
                     <div class="mb-10">
                         <h3 class="text-2xl font-black uppercase tracking-tighter leading-tight">Pack MSA – <br>"Minimum Standard Allowed"</h3>
-                        <p class="text-blue-500 font-bold italic text-sm mt-2">Amenant Fondation & Sérénité</p>
+                        <p class="text-blue-500 font-bold italic text-sm mt-2" x-text="t[lang].msaSlogan"></p>
                     </div>
 
                     <div class="space-y-10 flex-grow">
                         <div>
-                            <p class="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] mb-5">Ce que vous achetez vraiment :</p>
+                            <p class="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] mb-5" x-text="t[lang].buyReal"></p>
                             <ul class="space-y-4 text-gray-200 text-sm">
-                                <li class="flex items-start"><span class="text-blue-500 mr-3 font-bold">✓</span> Tranquillité mentale totale</li>
-                                <li class="flex items-start"><span class="text-blue-500 mr-3 font-bold">✓</span> Zéro décision technique à prendre</li>
-                                <li class="flex items-start"><span class="text-blue-500 mr-3 font-bold">✓</span> Un interlocuteur unique si quelque chose casse</li>
-                                <li class="flex items-start"><span class="text-blue-500 mr-3 font-bold">✓</span> Continuité : votre business reste opérationnel même si vous disparaissez 3 mois</li>
-                                <li class="flex items-start"><span class="text-blue-500 mr-3 font-bold">✓</span> Accès prioritaire quand c’est urgent</li>
+                                <template x-for="item in t[lang].msaBenefits">
+                                    <li class="flex items-start"><span class="text-blue-500 mr-3 font-bold">✓</span> <span x-text="item"></span></li>
+                                </template>
                             </ul>
                         </div>
 
                         <div class="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
 
                         <div>
-                            <p class="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] mb-5">Comment on garantit ça :</p>
+                            <p class="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] mb-5" x-text="t[lang].guarantee"></p>
                             <ul class="space-y-3 text-xs text-gray-400">
-                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500/50 rounded-full mr-3"></span> Mise en place écosystème Meta complet</li>
-                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500/50 rounded-full mr-3"></span> Instagram + TikTok Business</li>
-                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500/50 rounded-full mr-3"></span> WhatsApp Business connecté</li>
-                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500/50 rounded-full mr-3"></span> Hébergement Haute Performance</li>
-                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500/50 rounded-full mr-3"></span> 1 Update Hebdomadaire</li>
-                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500/50 rounded-full mr-3"></span> Support technique 24/7 – réception des incidents</li>
-                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500/50 rounded-full mr-3"></span> Intervention (J+1 ouvré hors urgence critique)</li>
-                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500/50 rounded-full mr-3"></span> Sauvegardes / rollback si problème</li>
+                                <template x-for="item in t[lang].msaDetails">
+                                    <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500/50 rounded-full mr-3"></span> <span x-text="item"></span></li>
+                                </template>
                             </ul>
                         </div>
                     </div>
 
                     <div class="mt-12 pt-8 border-t border-white/5 text-center">
                         <p class="text-3xl font-black mb-6">50€<span class="text-sm text-gray-500 font-normal"> /mois</span></p>
-                        <button @click="selectedService = 'msa'; showSelector = true; window.location.hash = 'footer-funnel'" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-black transition uppercase tracking-widest text-xs">Prendre ce pack</button>
+                        <a href="https://calendly.com/lucabesson333/30min" target="_blank" class="block w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-black transition uppercase tracking-widest text-xs text-center" x-text="t[lang].btnTakePack"></a>
                     </div>
                 </div>
 
@@ -139,40 +133,34 @@
                     
                     <div class="mb-10">
                         <h3 class="text-2xl font-black uppercase tracking-tighter leading-tight">Pack CIK – <br>"Client Is King"</h3>
-                        <p class="text-blue-500 font-bold italic text-sm mt-2">Amenant Écosystème global & Accès Prioritaire</p>
+                        <p class="text-blue-500 font-bold italic text-sm mt-2" x-text="t[lang].cikSlogan"></p>
                     </div>
 
                     <div class="space-y-10 flex-grow">
                         <div>
-                            <p class="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] mb-5">Ce que vous achetez vraiment :</p>
+                            <p class="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] mb-5" x-text="t[lang].buyReal"></p>
                             <ul class="space-y-4 text-gray-200 text-sm">
-                                <li class="flex items-start"><span class="text-blue-500 mr-3 font-bold">✓</span> Tranquillité mentale totale</li>
-                                <li class="flex items-start"><span class="text-blue-500 mr-3 font-bold">✓</span> Zéro décision technique à prendre</li>
-                                <li class="flex items-start"><span class="text-blue-500 mr-3 font-bold">✓</span> Un interlocuteur unique si quelque chose casse</li>
-                                <li class="flex items-start"><span class="text-blue-500 mr-3 font-bold">✓</span> Continuité : votre business reste opérationnel même si vous disparaissez 3 mois</li>
-                                <li class="flex items-start"><span class="text-blue-500 mr-3 font-bold">✓</span> Accès prioritaire quand c’est urgent</li>
+                                <template x-for="item in t[lang].msaBenefits">
+                                    <li class="flex items-start"><span class="text-blue-500 mr-3 font-bold">✓</span> <span x-text="item"></span></li>
+                                </template>
                             </ul>
                         </div>
 
                         <div class="h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent"></div>
 
                         <div>
-                            <p class="text-[10px] font-black text-blue-400 uppercase tracking-[0.2em] mb-5">Inclut tout le pack MSA + :</p>
+                            <p class="text-[10px] font-black text-blue-400 uppercase tracking-[0.2em] mb-5" x-text="t[lang].includeMsa"></p>
                             <ul class="space-y-3 text-xs text-gray-400">
-                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3"></span> Processeur de paiement</li>
-                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3"></span> Création du Business Manager</li>
-                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3"></span> Mise en place du Meta Business Suite</li>
-                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3"></span> Pré-requis prêts pour publicité (sans la gérer)</li>
-                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3"></span> Possible refonte mensuelle complète</li>
-                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3"></span> 3 Updates simultanées / semaine</li>
-                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3"></span> Support Prioritaire VIP</li>
+                                <template x-for="item in t[lang].cikDetails">
+                                    <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3"></span> <span x-text="item"></span></li>
+                                </template>
                             </ul>
                         </div>
                     </div>
 
                     <div class="mt-12 pt-8 border-t border-white/5 text-center">
                         <p class="text-3xl font-black mb-6">100€<span class="text-sm text-gray-500 font-normal"> /mois</span></p>
-                        <button @click="selectedService = 'cik'; showSelector = true; window.location.hash = 'footer-funnel'" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-black transition uppercase tracking-widest text-xs">Prendre ce pack</button>
+                        <a href="https://calendly.com/lucabesson333/30min" target="_blank" class="block w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-black transition uppercase tracking-widest text-xs text-center" x-text="t[lang].btnTakePack"></a>
                     </div>
                 </div>
 
@@ -202,20 +190,20 @@
                     </div>
 
                     <div class="space-y-6">
-                        <div @click="selectedService = 'logic'; showSelector = true; window.location.hash = 'footer-funnel'" class="group cursor-pointer bg-zinc-900/40 p-10 rounded-3xl border border-white/5 card-glow transition-all">
+                        <a href="https://calendly.com/lucabesson333/30min" target="_blank" class="block group bg-zinc-900/40 p-10 rounded-3xl border border-white/5 card-glow transition-all">
                             <h4 class="font-black text-xl mb-2 uppercase tracking-tighter group-hover:text-blue-500 transition">Math-Logic Performance</h4>
                             <p class="text-4xl font-black text-white mb-4">1 500€<span class="text-xs text-gray-500 font-normal"> /mois</span></p>
-                            <p class="text-sm text-gray-400 italic font-light">Media Buying + Bottleneck Identification + Metric Science. Une approche purement mathématique du scale.</p>
-                        </div>
+                            <p class="text-sm text-gray-400 italic font-light" x-text="t[lang].logicDesc"></p>
+                        </a>
 
-                        <div @click="selectedService = 'deep'; showSelector = true; window.location.hash = 'footer-funnel'" class="group cursor-pointer bg-zinc-900/80 p-10 rounded-3xl border-2 border-blue-600 card-glow transition-all">
+                        <a href="https://calendly.com/lucabesson333/30min" target="_blank" class="block group bg-zinc-900/80 p-10 rounded-3xl border-2 border-blue-600 card-glow transition-all">
                             <div class="flex justify-between items-start mb-2">
                                 <h4 class="font-black text-xl uppercase tracking-tighter group-hover:text-blue-400 transition">"DEEPFAKE-QUALITY" AI Dominance</h4>
                                 <span class="bg-blue-600 text-[10px] px-3 py-1 rounded-full font-bold uppercase">God Mode</span>
                             </div>
                             <p class="text-4xl font-black text-white mb-4">3 000€<span class="text-xs text-gray-500 font-normal"> /mois</span></p>
-                            <p class="text-sm text-gray-300 font-light italic">Le pack Math-Logic + Création de clones IA "DEEPFAKE-QUALITY" pour des UGC illimités sans jamais allumer une caméra.</p>
-                        </div>
+                            <p class="text-sm text-gray-300 font-light italic" x-text="t[lang].deepDesc"></p>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -225,51 +213,11 @@
             <div class="max-w-4xl mx-auto px-6">
                 <h2 class="text-4xl font-black mb-16 uppercase tracking-tighter" x-text="t[lang].footerTitle"></h2>
                 
-                <button @click="showSelector = !showSelector" class="bg-white text-black px-12 py-5 rounded-full font-black text-xl hover:bg-blue-600 hover:text-white transition transform active:scale-95 uppercase tracking-widest">
-                    Lancer la machine
-                </button>
-
-                <div x-show="showSelector" x-transition.opacity class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <button @click="selectedService = 'msa'" :class="selectedService === 'msa' ? 'border-blue-500 bg-blue-500/10' : 'border-white/10 bg-white/5'" class="p-6 border rounded-2xl transition group">
-                        <span class="block font-black text-xs group-hover:text-blue-500">PACK MSA</span>
-                        <span class="text-[10px] text-gray-500 uppercase">50€/mo</span>
-                    </button>
-                    <button @click="selectedService = 'cik'" :class="selectedService === 'cik' ? 'border-blue-500 bg-blue-500/10' : 'border-white/10 bg-white/5'" class="p-6 border rounded-2xl transition group">
-                        <span class="block font-black text-xs group-hover:text-blue-500">PACK CIK</span>
-                        <span class="text-[10px] text-gray-500 uppercase">100€/mo</span>
-                    </button>
-                    <button @click="selectedService = 'logic'" :class="selectedService === 'logic' ? 'border-blue-500 bg-blue-500/10' : 'border-white/10 bg-white/5'" class="p-6 border rounded-2xl transition group">
-                        <span class="block font-black text-xs group-hover:text-blue-500 uppercase">Math-Logic</span>
-                        <span class="text-[10px] text-gray-500 uppercase">1500€/mo</span>
-                    </button>
-                    <button @click="selectedService = 'deep'" :class="selectedService === 'deep' ? 'border-blue-500 bg-blue-500/10' : 'border-white/10 bg-white/5'" class="p-6 border rounded-2xl transition group">
-                        <span class="block font-black text-xs group-hover:text-blue-500 uppercase">"DEEPFAKE-QUALITY"</span>
-                        <span class="text-[10px] text-gray-500 uppercase">3000€/mo</span>
-                    </button>
-                </div>
-
-                <div x-show="selectedService !== ''" x-transition:enter class="mt-16 bg-zinc-900/90 backdrop-blur-xl p-8 md:p-16 rounded-[3rem] border border-white/10 text-left">
-                    <div class="aspect-video bg-black rounded-3xl mb-12 overflow-hidden border border-blue-500/20 flex items-center justify-center relative group">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-900/20 to-transparent"></div>
-                        <div class="text-center">
-                            <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 cursor-pointer hover:scale-110 transition">
-                                <svg class="w-6 h-6 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                            </div>
-                            <p class="text-zinc-600 font-black uppercase tracking-[0.4em] text-[10px]">VSL : <span class="text-blue-500" x-text="selectedService"></span></p>
-                        </div>
-                    </div>
-                    
-                    <div class="text-center">
-                        <button class="bg-blue-600 text-white px-16 py-6 rounded-2xl font-black text-xl hover:bg-white hover:text-black transition uppercase shadow-2xl">
-                            Accéder au checkout
-                        </button>
-                        <p class="mt-6 text-gray-600 text-[10px] uppercase tracking-widest italic">Paiement sécurisé via Stripe & Cryptage SSL 256-bit</p>
-                    </div>
-                </div>
+                <a href="https://calendly.com/lucabesson333/30min" target="_blank" class="inline-block bg-white text-black px-12 py-5 rounded-full font-black text-xl hover:bg-blue-600 hover:text-white transition transform active:scale-95 uppercase tracking-widest" x-text="t[lang].btnLaunch"></a>
 
                 <div class="mt-32 pb-10 flex flex-col items-center">
                     <div class="text-xl font-black tracking-tighter uppercase mb-4 opacity-30">THE SCALER'S AGENCY</div>
-                    <p class="text-gray-800 text-[9px] tracking-[0.5em] uppercase font-bold italic">© 2026 PRECISION ENGINEERING — HIGH PERFORMANCE ONLY</p>
+                    <p class="text-gray-800 text-[9px] tracking-[0.5em] uppercase font-bold italic" x-text="t[lang].copyright"></p>
                 </div>
             </div>
         </footer>
@@ -329,7 +277,7 @@
                 }
             }
             draw() {
-                ctx.fillStyle = 'rgba(59, 130, 246, 1.0)'; // Couleur néon fixe demandée
+                ctx.fillStyle = 'rgba(59, 130, 246, 1.0)';
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -381,27 +329,88 @@
                         hero1: "VOTRE CROISSANCE N'EST PAS UN",
                         hero2: "HASARD.",
                         heroSub: "Nous brisons les bottlenecks de votre funnel grâce à une ingénierie publicitaire de précision et des assets IA de nouvelle génération.",
+                        btnScale: "Booker un appel",
+                        btnPackages: "Nos Packages",
+                        btnAi: "Solutions IA",
                         sectionWeb: "INFRASTRUCTURE WEB",
                         sectionScale: "PERFORMANCE & SCALE",
+                        msaSlogan: "Amenant Fondation & Sérénité",
+                        buyReal: "Ce que vous achetez vraiment :",
+                        msaBenefits: ["Tranquillité mentale totale", "Zéro décision technique à prendre", "Un interlocuteur unique si quelque chose casse", "Continuité : votre business reste opérationnel", "Accès prioritaire quand c’est urgent"],
+                        guarantee: "Comment on garantit ça :",
+                        msaDetails: ["Écosystème Meta complet", "Instagram + TikTok Business", "WhatsApp Business connecté", "Hébergement Haute Performance", "Support technique 24/7"],
+                        btnTakePack: "Réserver un créneau",
+                        cikSlogan: "Amenant Écosystème global & Accès Prioritaire",
+                        includeMsa: "Inclut tout le pack MSA + :",
+                        cikDetails: ["Processeur de paiement", "Création Business Manager", "Mise en place Meta Business Suite", "Refonte mensuelle complète", "Support Prioritaire VIP"],
                         aiTitle1: "\"DEEPFAKE-QUALITY\" IA & MATHS DE PRÉCISION",
                         aiTitle2: "VOTRE R.O.A.S.",
                         aiDesc: "Des modèles UGC synthétiques IA de qualité \"DEEPFAKE-QUALITY\" et des scripts stratégiques conçus pour exploser les conversions sans coûts de tournage.",
                         quote: "Ma méthode utilise de réelles équations mathématiques pour identifier les bottlenecks précis et arrêter les tests 'hypothétiques'. J'ouvre le flux, vous encaissez.",
                         mathJoke: "Je tiens à vous prévenir que ceci n'est pas la formule exacte, mais elle s'en rapproche.",
+                        logicDesc: "Media Buying + Bottleneck Identification + Metric Science. Une approche purement mathématique du scale.",
+                        deepDesc: "Le pack Math-Logic + Création de clones IA \"DEEPFAKE-QUALITY\" pour des UGC illimités sans jamais allumer une caméra.",
                         footerTitle: "PRÊT À PASSER AU NIVEAU SUPÉRIEUR ?",
+                        btnLaunch: "Réserver ma consultation",
+                        copyright: "© 2026 PRECISION ENGINEERING — HIGH PERFORMANCE ONLY"
                     },
                     en: {
                         hero1: "YOUR GROWTH IS NOT BY",
                         hero2: "ACCIDENT.",
                         heroSub: "We engineering scaling through real mathematical formulas and \"DEEPFAKE-QUALITY\" AI ads.",
+                        btnScale: "Book a call",
+                        btnPackages: "Our Packages",
+                        btnAi: "AI Solutions",
                         sectionWeb: "WEB INFRASTRUCTURE",
                         sectionScale: "PERFORMANCE & SCALE",
+                        msaSlogan: "Bringing Foundation & Serenity",
+                        buyReal: "What you are really buying:",
+                        msaBenefits: ["Total peace of mind", "Zero technical decisions to make", "Single point of contact if anything breaks", "Continuity: business stays operational", "Priority access for urgencies"],
+                        guarantee: "How we guarantee this:",
+                        msaDetails: ["Full Meta ecosystem set-up", "Instagram + TikTok Business", "WhatsApp Business connected", "High Performance Hosting", "24/7 technical support"],
+                        btnTakePack: "Book a slot",
+                        cikSlogan: "Bringing Global Ecosystem & Priority Access",
+                        includeMsa: "Includes full MSA pack +:",
+                        cikDetails: ["Payment processor set-up", "Business Manager creation", "Meta Business Suite implementation", "Possible monthly complete redesign", "VIP Priority Support"],
                         aiTitle1: "\"DEEPFAKE-QUALITY\" AI & MATH PRECISION",
                         aiTitle2: "YOUR R.O.A.S.",
                         aiDesc: "\"DEEPFAKE-QUALITY\" synthetic AI UGC models and strategic scripts designed to explode conversions without filming costs.",
                         quote: "My method use real mathematic equations to identifies exact funnel bottlenecks and stop testing 'hypothetically'. I unlock the flow, you collect the profits.",
                         mathJoke: "I must warn you: this is not the actual formula we use, but it looks like it.",
+                        logicDesc: "Media Buying + Bottleneck Identification + Metric Science. A purely mathematical approach to scaling.",
+                        deepDesc: "Math-Logic pack + \"DEEPFAKE-QUALITY\" AI clones for unlimited UGC without ever turning on a camera.",
                         footerTitle: "READY TO REACH THE NEXT LEVEL?",
+                        btnLaunch: "Book my consultation",
+                        copyright: "© 2026 PRECISION ENGINEERING — HIGH PERFORMANCE ONLY"
+                    },
+                    es: {
+                        hero1: "TU CRECIMIENTO NO ES POR",
+                        hero2: "CASUALIDAD.",
+                        heroSub: "Rompemos los cuellos de botella de tu funnel mediante ingeniería publicitaria de precisión y activos de IA de nueva generación.",
+                        btnScale: "Reservar cita",
+                        btnPackages: "Nuestros Packs",
+                        btnAi: "Soluciones IA",
+                        sectionWeb: "INFRAESTRUCTURA WEB",
+                        sectionScale: "RENDIMIENTO Y ESCALA",
+                        msaSlogan: "Aportando Base y Serenidad",
+                        buyReal: "Lo que realmente estás comprando:",
+                        msaBenefits: ["Tranquilidad mental total", "Cero decisiones técnicas que tomar", "Interlocutor único si algo falla", "Continuidad: tu negocio sigue operativo", "Acceso prioritario en urgencias"],
+                        guarantee: "Cómo lo garantizamos:",
+                        msaDetails: ["Ecosistema Meta completo", "Instagram + TikTok Business", "WhatsApp Business conectado", "Alojamiento de Alto Rendimiento", "Soporte técnico 24/7"],
+                        btnTakePack: "Reservar ahora",
+                        cikSlogan: "Aportando Ecosistema Global y Acceso Prioritario",
+                        includeMsa: "Incluye todo el pack MSA +:",
+                        cikDetails: ["Procesador de pagos", "Creación de Business Manager", "Configuración de Meta Business Suite", "Rediseño mensual completo posible", "Soporte Prioritario VIP"],
+                        aiTitle1: "IA \"DEEPFAKE-QUALITY\" Y MATEMÁTICAS",
+                        aiTitle2: "TU R.O.A.S.",
+                        aiDesc: "Modelos UGC sintéticos de IA de calidad \"DEEPFAKE-QUALITY\" y guiones estratégicos diseñados para disparar las conversiones.",
+                        quote: "Mi método utiliza ecuaciones matemáticas reales para identificar cuellos de botella exactos y dejar de probar 'hipotéticamente'. Yo abro el flujo, tú cobras.",
+                        mathJoke: "Te advierto que esta no es la fórmula exacta, pero se le parece.",
+                        logicDesc: "Media Buying + Identificación de cuellos de botella + Ciencia de métricas. Un enfoque puramente matemático.",
+                        deepDesc: "Pack Math-Logic + Creación de clones IA \"DEEPFAKE-QUALITY\" para UGC ilimitados sin encender una cámara.",
+                        footerTitle: "¿LISTO PARA EL SIGUIENTE NIVEL?",
+                        btnLaunch: "Reservar mi consulta",
+                        copyright: "© 2026 PRECISION ENGINEERING — HIGH PERFORMANCE ONLY"
                     }
                 }
             }
